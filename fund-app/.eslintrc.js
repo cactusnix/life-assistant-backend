@@ -1,18 +1,18 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true
+    es6: true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   extends: [
-    'plugin:react/recommend',
+    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
-  rules: {}
+  rules: {},
 };
