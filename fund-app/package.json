@@ -17,8 +17,8 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "eslint '*/**/*.{js,ts,tsx}' --quiet && react-scripts start",
+    "build": "eslint '*/**/*.{js,ts,tsx}' --quiet && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet"
@@ -51,13 +51,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsc --noEmit && lint-staged"
+      "pre-commit": "prettier --check '*/**/*.{js,ts,tsx}' && tsc --noEmit && lint-staged"
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
+    "*/**/*.{js,ts,tsx}": [
       "eslint --fix",
-      "git add ."
+      "git add"
     ]
   }
 }

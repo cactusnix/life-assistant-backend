@@ -1,9 +1,11 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/** @format */
+
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
 
 function App() {
-  const a = 22;
+  const a = 22
   return (
     <div className="App">
       <header className="App-header">
@@ -21,7 +23,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
