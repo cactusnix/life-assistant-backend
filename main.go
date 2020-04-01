@@ -6,8 +6,7 @@ import (
 )
 
 func main() {
-	customerDb := db.InitDB()
-	defer customerDb.Close()
-	r := routers.InitRouter()
-	r.Run()
+	initDB := db.InitDB()
+	db.CreateDBTable(initDB)
+	routers.CustomHTTP()
 }

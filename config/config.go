@@ -8,10 +8,10 @@ import (
 )
 
 // InitViper 初始化读取配置文件
-func InitViper() *viper.Viper {
+func InitViper(fileName string) *viper.Viper {
 	v := viper.New()
 	v.AddConfigPath("./config")
-	v.SetConfigName("db")
+	v.SetConfigName(fileName)
 	v.SetConfigType("toml")
 	err := v.ReadInConfig()
 	if err != nil {

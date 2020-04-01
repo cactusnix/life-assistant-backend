@@ -1,11 +1,12 @@
-package handlers
+package fundhandle
 
 import (
 	"net/http"
 	"strconv"
 
 	"github.com/fund-go/models"
-	"github.com/fund-go/services"
+	"github.com/fund-go/models/fundmodel"
+	"github.com/fund-go/services/fundservice"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,8 +18,8 @@ func GetFund(c *gin.Context) {
 			"msg":  err.Error(),
 		})
 	} else {
-		query := models.Fund{Base: models.Base{ID: uint(id)}}
-		if funds, err := services.GetFunds(query); err != nil {
+		query := fundmodel.Fund{Base: models.Base{ID: uint(id)}}
+		if funds, err := fundservice.GetFunds(query); err != nil {
 			c.JSON(http.StatusOK, gin.H{
 				"code": 0,
 				"msg":  err,
@@ -34,7 +35,7 @@ func GetFund(c *gin.Context) {
 
 // GetFunds get fund list
 func GetFunds(c *gin.Context) {
-	var query models.Fund
+	var query fundmodel.Fund
 	if err := c.ShouldBind(&query); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"code": -1,
@@ -42,7 +43,7 @@ func GetFunds(c *gin.Context) {
 		})
 		return
 	}
-	if funds, err := services.GetFunds(query); err != nil {
+	if funds, err := fundservice.GetFunds(query); err != nil {
 		c.JSON(200, gin.H{
 			"code": 1,
 			"msg":  err,
@@ -57,7 +58,7 @@ func GetFunds(c *gin.Context) {
 
 // AddFund add fund
 func AddFund(c *gin.Context) {
-	var fund models.Fund
+	var fund fundmodel.Fund
 	if err := c.ShouldBind(&fund); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"code": -1,
@@ -65,7 +66,7 @@ func AddFund(c *gin.Context) {
 		})
 		return
 	}
-	if err := services.AddFund(&fund); err != nil {
+	if err := fundservice.AddFund(&fund); err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"code": 1,
 			"msg":  err,
