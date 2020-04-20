@@ -1,4 +1,4 @@
-package config
+package utils
 
 import (
 	"fmt"
@@ -7,8 +7,8 @@ import (
 	"github.com/spf13/viper"
 )
 
-// InitViper 初始化读取配置文件
-func InitViper(fileName string) *viper.Viper {
+// Viper 初始化读取配置文件
+func Viper(fileName string) *viper.Viper {
 	v := viper.New()
 	v.AddConfigPath("./config")
 	v.SetConfigName(fileName)

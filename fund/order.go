@@ -1,12 +1,10 @@
-package fundmodel
+package fund
 
-import (
-	"github.com/fund-go/models"
-)
+import "github.com/life-assistant-go/base"
 
-// Buy fund record model
-type Buy struct {
-	models.Base
+// Order fund record model
+type Order struct {
+	base.Model
 	OrderNumber           string  `gorm:"size:20;not null;comment:'订单编号'" form:"orderNumber" json:"orderNumber" binding:"required"`
 	Code                  string  `gorm:"size:6;not null;comment:'基金代码'" form:"code" json:"code" binding:"required"`
 	HoldingDays           uint    `gorm:"default:0;not null;comment:'基金持有天数'" form:"holdingDays" json:"holdingDays"`
@@ -21,6 +19,6 @@ type Buy struct {
 }
 
 // TableName set the database table name
-func (Buy) TableName() string {
-	return "fund_buy_records"
+func (Order) TableName() string {
+	return "fund_orders"
 }

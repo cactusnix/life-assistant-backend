@@ -1,12 +1,8 @@
 package main
 
-import (
-	"github.com/fund-go/db"
-	"github.com/fund-go/routers"
-)
+import "github.com/life-assistant-go/app"
 
 func main() {
-	initDB := db.InitDB()
-	db.CreateDBTable(initDB)
-	routers.CustomHTTP()
+	app.DBTable()
+	app.Router()
 }
