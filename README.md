@@ -13,7 +13,7 @@ base model and so on
 The documents of this api project
 
 ### base 
-basic model & basic code
+Only define base struct data
 
 ### fund
 Fund module for this system

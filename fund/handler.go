@@ -16,19 +16,19 @@ func GetFund(c *gin.Context) {
 	if id, err := strconv.ParseUint(c.Query("id"), 10, 64); err != nil {
 		c.JSON(
 			http.StatusBadRequest,
-			base.GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
+			utils.GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
 		)
 	} else {
 		query := Fund{Model: base.Model{ID: uint(id)}}
 		if err := utils.DB().Where(query).First(&fund).Error; err != nil {
 			c.JSON(
 				http.StatusInternalServerError,
-				base.GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
+				utils.GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
 			)
 		} else {
 			c.JSON(
 				http.StatusOK,
-				base.GenerateRes("success", map[string]interface{}{"data": fund}),
+				utils.GenerateRes("success", map[string]interface{}{"data": fund}),
 			)
 		}
 	}
@@ -44,12 +44,12 @@ func GetFunds(c *gin.Context) {
 	if err := utils.DB().Where(query).Find(&funds).Error; err != nil {
 		c.JSON(
 			http.StatusOK,
-			base.GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
+			utils.GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
 		)
 	} else {
 		c.JSON(
 			http.StatusOK,
-			base.GenerateRes("success", map[string]interface{}{"list": funds}),
+			utils.GenerateRes("success", map[string]interface{}{"list": funds}),
 		)
 	}
 }
@@ -60,19 +60,24 @@ func AddFund(c *gin.Context) {
 	if err := c.ShouldBind(&fund); err != nil {
 		c.JSON(
 			http.StatusBadRequest,
-			base.GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
+			utils.GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
 		)
 	} else {
 		if err := utils.DB().Create(&fund).Error; err != nil {
 			c.JSON(
 				http.StatusBadRequest,
-				base.GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
+				utils.GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
 			)
 		} else {
 			c.JSON(
 				http.StatusOK,
-				base.GenerateRes("success", map[string]interface{}{"data": fund}),
+				utils.GenerateRes("success", map[string]interface{}{"data": fund}),
 			)
 		}
 	}
 }
+
+// AddOrder add order record
+// func AddOrder(c *gin.Context) {
+// 	var order Order
+// }

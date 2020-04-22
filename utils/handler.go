@@ -1,14 +1,13 @@
-package base
+package utils
 
 import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/life-assistant-go/utils"
 )
 
-// GetObjs get obj may be
-func GetObjs(c *gin.Context, query interface{}) {
+// AddObj get obj may be
+func AddObj(c *gin.Context, query interface{}) {
 	var result []interface{}
 	if err := c.ShouldBind(&query); err != nil {
 		c.JSON(
@@ -17,7 +16,7 @@ func GetObjs(c *gin.Context, query interface{}) {
 		)
 		return
 	}
-	if err := utils.DB().Where(query).Find(&result).Error; err != nil {
+	if err := DB().Where(query).Find(&result).Error; err != nil {
 		c.JSON(
 			http.StatusBadRequest,
 			GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
