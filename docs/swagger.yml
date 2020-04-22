@@ -1,16 +1,92 @@
 consumes:
   - application/json
-definitions: {}
+definitions:
+  Fund:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      code:
+        type: string
+  FundData:
+    type: object
+    properties:
+      code:
+        type: integer
+      msg:
+        type: string
+      data:
+        $ref: "#/definitions/Fund"
+  FundList:
+    type: object
+    properties:
+      code:
+        type: integer
+      msg:
+        type: string
+      list:
+        type: array
+        items:
+          $ref: "#/definitions/Fund"
 info:
   description: Life assistant api
   title: Docs
   version: 0.1.0
 paths:
-  /getFund:
+  /fund/getFund:
     get:
       tags:
         - fund
-      response: 200
+      summary: Find fund by ID
+      parameters:
+        - name: id
+          in: query
+          description: id of fund to return
+          required: true
+          type: integer
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/FundData"
+  /fund/getFunds:
+    get:
+      tags:
+        - fund
+      summary: Find funds by fund object
+      parameters:
+        - name: code
+          in: query
+          description: code of fund to return
+          type: string
+        - name: name
+          in: query
+          description: name of fund to return
+          type: string
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/FundList"
+  /fund/addFund:
+    post:
+      tags:
+        - fund
+      summary: Add new fund
+      parameters:
+        - name: body
+          in: body
+          description: Fund object that needs to be added
+          required: true
+          schema:
+            $ref: "#/definitions/Fund"
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/Fund"
 produces:
   - application/json
 schemes:

@@ -17,6 +17,8 @@ func Router() {
 	r1 := r.Group("/fund")
 	{
 		r1.GET("/getFund", fund.GetFund)
+		r1.GET("/getFunds", fund.GetFunds)
+		r1.POST("/addFund", fund.AddFund)
 	}
 	s := &http.Server{
 		Addr:           port,
