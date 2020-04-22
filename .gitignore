@@ -1,2 +1,5 @@
 # macOS ignore
 .DS_Store
+
+# vscode ignore
+.vscode
