@@ -4,7 +4,7 @@
 API project entrance
 
 ### utils
-config、db etc object
+Only define function for global use.
 
 ### models
 base model and so on
