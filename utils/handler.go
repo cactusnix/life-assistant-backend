@@ -8,6 +8,84 @@ import (
 	"github.com/life-assistant-go/base"
 )
 
+// CreateObj create obj
+func CreateObj(c *gin.Context, obj interface{}) {
+	if err := c.ShouldBind(obj); err != nil {
+		c.JSON(
+			http.StatusBadRequest,
+			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
+		)
+	} else {
+		if err := DB().Create(obj).Error; err != nil {
+			c.JSON(
+				http.StatusBadRequest,
+				GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
+			)
+		} else {
+			c.JSON(
+				http.StatusOK,
+				GenerateRes("success", map[string]interface{}{
+					"msg": base.CreateSuccessMsg,
+				}),
+			)
+		}
+	}
+}
+
+// DeleteObj Delete obj
+func DeleteObj(c *gin.Context, obj interface{}) {
+	if id, err := strconv.ParseUint(c.Query("id"), 10, 64); err != nil {
+		c.JSON(
+			http.StatusBadRequest,
+			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
+		)
+	} else {
+		if err := DB().Where("id = ?", uint(id)).Find(obj).Delete(obj).Error; err != nil {
+			c.JSON(
+				http.StatusInternalServerError,
+				GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
+			)
+		} else {
+			c.JSON(
+				http.StatusOK,
+				GenerateRes("success", map[string]interface{}{
+					"msg": base.DeleteSuccessMsg,
+				}),
+			)
+		}
+	}
+}
+
+// UpdateObj update obj
+func UpdateObj(c *gin.Context, form []string, obj interface{}) {
+	var param map[string]interface{}
+	if id, err := strconv.ParseUint(c.Query("id"), 10, 64); err != nil {
+		c.JSON(
+			http.StatusBadRequest,
+			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
+		)
+	} else {
+		for _, v := range form {
+			if c.PostForm("v") != "" {
+				param[v] = c.PostForm("v")
+			}
+		}
+		if err := DB().Where("id = ?", uint(id)).Model(obj).Updates(param).Error; err != nil {
+			c.JSON(
+				http.StatusBadRequest,
+				GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
+			)
+		} else {
+			c.JSON(
+				http.StatusOK,
+				GenerateRes("success", map[string]interface{}{
+					"msg": base.UpdateSuccessMsg,
+				}),
+			)
+		}
+	}
+}
+
 // GetObj get obj
 func GetObj(c *gin.Context, obj interface{}) {
 	if id, err := strconv.ParseUint(c.Query("id"), 10, 64); err != nil {
@@ -88,59 +166,5 @@ func GetObjs(c *gin.Context, query []string, objs interface{}) {
 				"msg":      base.ReadSuccessMsg,
 			}),
 		)
-	}
-}
-
-// CreateObj create obj
-func CreateObj(c *gin.Context, obj interface{}) {
-	if err := c.ShouldBind(obj); err != nil {
-		c.JSON(
-			http.StatusBadRequest,
-			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
-		)
-	} else {
-		if err := DB().Create(obj).Error; err != nil {
-			c.JSON(
-				http.StatusBadRequest,
-				GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
-			)
-		} else {
-			c.JSON(
-				http.StatusOK,
-				GenerateRes("success", map[string]interface{}{
-					"msg": base.CreateSuccessMsg,
-				}),
-			)
-		}
-	}
-}
-
-// UpdateObj update obj
-func UpdateObj(c *gin.Context, form []string, obj interface{}) {
-	var param map[string]interface{}
-	if id, err := strconv.ParseUint(c.PostForm("id"), 10, 64); err != nil {
-		c.JSON(
-			http.StatusBadRequest,
-			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
-		)
-	} else {
-		for _, v := range form {
-			if c.PostForm("v") != "" {
-				param[v] = c.PostForm("v")
-			}
-		}
-		if err := DB().Where("id = ?", uint(id)).Model(obj).Updates(param).Error; err != nil {
-			c.JSON(
-				http.StatusBadRequest,
-				GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
-			)
-		} else {
-			c.JSON(
-				http.StatusOK,
-				GenerateRes("success", map[string]interface{}{
-					"msg": base.UpdateSuccessMsg,
-				}),
-			)
-		}
 	}
 }

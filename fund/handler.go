@@ -12,6 +12,10 @@ func CreateFund(c *gin.Context) {
 }
 
 // DeleteFund delete
+func DeleteFund(c *gin.Context) {
+	var fund Fund
+	utils.DeleteObj(c, &fund)
+}
 
 // UpdateFund update
 func UpdateFund(c *gin.Context) {
