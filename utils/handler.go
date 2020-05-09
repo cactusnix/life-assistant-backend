@@ -25,7 +25,7 @@ func CreateObj(c *gin.Context, obj interface{}) {
 			c.JSON(
 				http.StatusOK,
 				GenerateRes("success", map[string]interface{}{
-					"msg": base.CreateSuccessMsg,
+					"msg": base.CreateSuccess,
 				}),
 			)
 		}
@@ -34,13 +34,13 @@ func CreateObj(c *gin.Context, obj interface{}) {
 
 // DeleteObj Delete obj
 func DeleteObj(c *gin.Context, obj interface{}) {
-	if id, err := strconv.ParseUint(c.Query("id"), 10, 64); err != nil {
+	if id, err := strconv.Atoi(c.Query("id")); err != nil {
 		c.JSON(
 			http.StatusBadRequest,
 			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
 		)
 	} else {
-		if err := DB().Where("id = ?", uint(id)).Find(obj).Delete(obj).Error; err != nil {
+		if err := DB().Where("id = ?", id).Find(obj).Delete(obj).Error; err != nil {
 			c.JSON(
 				http.StatusInternalServerError,
 				GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
@@ -49,7 +49,7 @@ func DeleteObj(c *gin.Context, obj interface{}) {
 			c.JSON(
 				http.StatusOK,
 				GenerateRes("success", map[string]interface{}{
-					"msg": base.DeleteSuccessMsg,
+					"msg": base.DeleteSuccess,
 				}),
 			)
 		}
@@ -59,7 +59,7 @@ func DeleteObj(c *gin.Context, obj interface{}) {
 // UpdateObj update obj
 func UpdateObj(c *gin.Context, form []string, obj interface{}) {
 	var param map[string]interface{}
-	if id, err := strconv.ParseUint(c.Query("id"), 10, 64); err != nil {
+	if id, err := strconv.Atoi(c.Query("id")); err != nil {
 		c.JSON(
 			http.StatusBadRequest,
 			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
@@ -70,7 +70,7 @@ func UpdateObj(c *gin.Context, form []string, obj interface{}) {
 				param[v] = c.PostForm("v")
 			}
 		}
-		if err := DB().Where("id = ?", uint(id)).Model(obj).Updates(param).Error; err != nil {
+		if err := DB().Where("id = ?", id).Model(obj).Updates(param).Error; err != nil {
 			c.JSON(
 				http.StatusBadRequest,
 				GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
@@ -79,7 +79,7 @@ func UpdateObj(c *gin.Context, form []string, obj interface{}) {
 			c.JSON(
 				http.StatusOK,
 				GenerateRes("success", map[string]interface{}{
-					"msg": base.UpdateSuccessMsg,
+					"msg": base.UpdateSuccess,
 				}),
 			)
 		}
@@ -88,13 +88,13 @@ func UpdateObj(c *gin.Context, form []string, obj interface{}) {
 
 // GetObj get obj
 func GetObj(c *gin.Context, obj interface{}) {
-	if id, err := strconv.ParseUint(c.Query("id"), 10, 64); err != nil {
+	if id, err := strconv.Atoi(c.Query("id")); err != nil {
 		c.JSON(
 			http.StatusBadRequest,
 			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
 		)
 	} else {
-		if err := DB().Where("id = ?", uint(id)).First(obj).Error; err != nil {
+		if err := DB().Where("id = ?", id).First(obj).Error; err != nil {
 			c.JSON(
 				http.StatusInternalServerError,
 				GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
@@ -104,7 +104,7 @@ func GetObj(c *gin.Context, obj interface{}) {
 				http.StatusOK,
 				GenerateRes("success", map[string]interface{}{
 					"data": obj,
-					"msg":  base.ReadSuccessMsg,
+					"msg":  base.ReadSuccess,
 				}),
 			)
 		}
@@ -121,8 +121,8 @@ func GetObjs(c *gin.Context, query []string, objs interface{}) {
 	// TODO
 	// optimize later
 	// count error now rows in result set
-	if pageNo, err := strconv.ParseUint(c.Query("pageNo"), 10, 64); err == nil {
-		pagination.PageNo = uint(pageNo)
+	if pageNo, err := strconv.Atoi(c.Query("pageNo")); err == nil {
+		pagination.PageNo = pageNo
 	} else {
 		c.JSON(
 			http.StatusBadRequest,
@@ -130,8 +130,8 @@ func GetObjs(c *gin.Context, query []string, objs interface{}) {
 		)
 		return
 	}
-	if pageSize, err := strconv.ParseUint(c.Query("pageSize"), 10, 64); err == nil {
-		pagination.PageSize = uint(pageSize)
+	if pageSize, err := strconv.Atoi(c.Query("pageSize")); err == nil {
+		pagination.PageSize = pageSize
 	} else {
 		c.JSON(
 			http.StatusBadRequest,
@@ -163,7 +163,7 @@ func GetObjs(c *gin.Context, query []string, objs interface{}) {
 				"pageNo":   pagination.PageNo,
 				"pageSize": pagination.PageSize,
 				"total":    pagination.Total,
-				"msg":      base.ReadSuccessMsg,
+				"msg":      base.ReadSuccess,
 			}),
 		)
 	}

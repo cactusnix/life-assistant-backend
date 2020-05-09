@@ -2,7 +2,7 @@ package base
 
 // Pagination struct
 type Pagination struct {
-	PageNo   uint `json:"pageNo"`
-	PageSize uint `json:"pageSize"`
-	Total    uint `json:"total"`
+	PageNo   int `json:"pageNo"`
+	PageSize int `json:"pageSize"`
+	Total    int `json:"total"`
 }
