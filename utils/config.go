@@ -7,11 +7,13 @@ import (
 	"github.com/spf13/viper"
 )
 
-// Viper 初始化读取配置文件
-func Viper(fileName string) *viper.Viper {
+// Config global object
+var Config *viper.Viper
+
+func init() {
 	v := viper.New()
 	v.AddConfigPath("./config")
-	v.SetConfigName(fileName)
+	v.SetConfigName("config")
 	v.SetConfigType("toml")
 	err := v.ReadInConfig()
 	if err != nil {
@@ -21,5 +23,5 @@ func Viper(fileName string) *viper.Viper {
 	v.OnConfigChange(func(e fsnotify.Event) {
 		fmt.Println("Config file changed:", e.Name)
 	})
-	return v
+	Config = v
 }

@@ -11,10 +11,8 @@ import (
 
 // Router init router
 func Router() {
-	r := utils.Router()
-	v := utils.Viper("server")
-	port := ":" + v.GetString("port")
-	r1 := r.Group("/fund")
+	port := ":" + utils.Config.GetString("server.port")
+	r1 := utils.Router.Group("/fund")
 	{
 		r1.POST("/createFund", fund.CreateFund)
 		r1.DELETE("/deleteFund", fund.DeleteFund)
@@ -25,7 +23,7 @@ func Router() {
 	}
 	s := &http.Server{
 		Addr:           port,
-		Handler:        r,
+		Handler:        utils.Router,
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: 1 << 20,

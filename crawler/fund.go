@@ -7,14 +7,15 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gocolly/colly"
+	"github.com/jinzhu/gorm"
 	"github.com/life-assistant-go/base"
 	"github.com/life-assistant-go/fund"
 	"github.com/life-assistant-go/utils"
+	log "github.com/sirupsen/logrus"
 )
 
 // ForFund init
 func ForFund() {
-	log := utils.Logger()
 	c := utils.Crawler()
 	c.OnHTML("tr", func(e *colly.HTMLElement) {
 		log.Info(e.Text)
@@ -24,42 +25,58 @@ func ForFund() {
 
 // ForWorth init
 func ForWorth(fundCode string) error {
-	log := utils.Logger()
 	var page base.Pagination
 	page.PageNo = 1
 	page.PageSize = 20
 	page.Total = 0
 	var worths []fund.Worth
-	_, total, _ := requestWorth(fundCode, strconv.Itoa(page.PageNo), strconv.Itoa(page.PageSize))
-	for ; len(worths) < total; page.PageNo++ {
-		results, _, err := requestWorth(fundCode, strconv.Itoa(page.PageNo), strconv.Itoa(page.PageSize))
-		if err != nil {
-			return err
+	var count int
+	var worth fund.Worth
+	if err := utils.DB.Where("code = ?", fundCode).Find(&worth).Count(&count).Error; gorm.IsRecordNotFoundError(err) {
+		count = 0
+	} else if err != nil {
+		return err
+	}
+	if count > 0 {
+		oneHour, _ := time.ParseDuration("24h")
+		startDate := worth.Date.Add(oneHour)
+		for _, total, _ := requestWorth(fundCode, strconv.Itoa(page.PageNo), strconv.Itoa(page.PageSize), startDate.Format("2006-01-02")); len(worths)+count < total; page.PageNo++ {
+			results, _, err := requestWorth(fundCode, strconv.Itoa(page.PageNo), strconv.Itoa(page.PageSize), startDate.Format("2006-01-02"))
+			if err != nil {
+				return err
+			}
+			worths = append(results, worths...)
 		}
-		worths = append(worths, results...)
+	} else {
+		for _, total, _ := requestWorth(fundCode, strconv.Itoa(page.PageNo), strconv.Itoa(page.PageSize), ""); len(worths) < total; page.PageNo++ {
+			results, _, err := requestWorth(fundCode, strconv.Itoa(page.PageNo), strconv.Itoa(page.PageSize), "")
+			if err != nil {
+				return err
+			}
+			worths = append(results, worths...)
+		}
 	}
 
 	for i, v := range worths {
 		log.Println("Review", i, v.Unit, v.Total, v.DailyGrowThRate, v.Date)
-		db := utils.DB()
-		if err := db.Create(&v).Error; err != nil {
+		if err := utils.DB.Create(&v).Error; err != nil {
 			return err
 		}
-		defer db.Close()
 	}
 
 	return nil
 }
 
-func requestWorth(fundCode string, pageNo string, pageSize string) ([]fund.Worth, int, error) {
+func requestWorth(fundCode string, pageNo string, pageSize string, startDate string) ([]fund.Worth, int, error) {
 	var worths []fund.Worth
 	url := "http://fund.eastmoney.com/f10/F10DataApi.aspx"
 
 	res, err := utils.HTTPGet(url, map[string]string{
-		"type": "lsjz",
-		"code": fundCode,
-		"page": pageNo,
-		"per":  pageSize,
+		"type":  "lsjz",
+		"code":  fundCode,
+		"page":  pageNo,
+		"per":   pageSize,
+		"sdate": startDate,
 	})
 	if err != nil {
 		return nil, 0, err
@@ -82,13 +99,14 @@ func requestWorth(fundCode string, pageNo string, pageSize string) ([]fund.Worth
 	}
 
 	doc.Find("tbody>tr").Each(func(i int, s *goquery.Selection) {
-		var temp fund.Worth
-		temp.Unit = s.Find("td:nth-child(2)").Text()
-		temp.Total = s.Find("td:nth-child(3)").Text()
-		temp.DailyGrowThRate = s.Find("td:nth-child(4)").Text()
-		date, _ := time.Parse("2006-01-02 15:04:05", s.Find("td:nth-child(1)").Text()+" 15:00:00")
-		temp.Date = date
-		worths = append(worths, temp)
+		temp := make([]fund.Worth, 1)
+		temp[0].Unit = s.Find("td:nth-child(2)").Text()
+		temp[0].Total = s.Find("td:nth-child(3)").Text()
+		temp[0].DailyGrowThRate = s.Find("td:nth-child(4)").Text()
+		date, _ := time.ParseInLocation("2006-01-02 15:04:05", s.Find("td:nth-child(1)").Text()+" 15:00:00", time.Local)
+		temp[0].Date = date
+		temp[0].Code = fundCode
+		worths = append(temp, worths...)
 	})
 	return worths, records, nil
 }

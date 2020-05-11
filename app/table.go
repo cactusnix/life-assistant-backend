@@ -7,25 +7,24 @@ import (
 
 // DBTable create table
 func DBTable() {
-	db := utils.DB()
 	// fund table
-	if db.HasTable(&fund.Fund{}) {
-		db.AutoMigrate(&fund.Fund{})
+	if utils.DB.HasTable(&fund.Fund{}) {
+		utils.DB.AutoMigrate(&fund.Fund{})
 	} else {
-		db.CreateTable(&fund.Fund{})
+		utils.DB.CreateTable(&fund.Fund{})
 	}
 
 	// order table
-	if db.HasTable(&fund.Order{}) {
-		db.AutoMigrate(&fund.Order{})
+	if utils.DB.HasTable(&fund.Order{}) {
+		utils.DB.AutoMigrate(&fund.Order{})
 	} else {
-		db.CreateTable(&fund.Order{})
+		utils.DB.CreateTable(&fund.Order{})
 	}
 
 	// worth table
-	if db.HasTable(&fund.Worth{}) {
-		db.AutoMigrate(&fund.Worth{})
+	if utils.DB.HasTable(&fund.Worth{}) {
+		utils.DB.AutoMigrate(&fund.Worth{})
 	} else {
-		db.CreateTable(&fund.Worth{})
+		utils.DB.CreateTable(&fund.Worth{})
 	}
 }

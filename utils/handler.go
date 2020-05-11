@@ -16,7 +16,7 @@ func CreateObj(c *gin.Context, obj interface{}) {
 			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
 		)
 	} else {
-		if err := DB().Create(obj).Error; err != nil {
+		if err := DB.Create(obj).Error; err != nil {
 			c.JSON(
 				http.StatusBadRequest,
 				GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
@@ -40,7 +40,7 @@ func DeleteObj(c *gin.Context, obj interface{}) {
 			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
 		)
 	} else {
-		if err := DB().Where("id = ?", id).Find(obj).Delete(obj).Error; err != nil {
+		if err := DB.Where("id = ?", id).Find(obj).Delete(obj).Error; err != nil {
 			c.JSON(
 				http.StatusInternalServerError,
 				GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
@@ -70,7 +70,7 @@ func UpdateObj(c *gin.Context, form []string, obj interface{}) {
 				param[v] = c.PostForm("v")
 			}
 		}
-		if err := DB().Where("id = ?", id).Model(obj).Updates(param).Error; err != nil {
+		if err := DB.Where("id = ?", id).Model(obj).Updates(param).Error; err != nil {
 			c.JSON(
 				http.StatusBadRequest,
 				GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
@@ -94,7 +94,7 @@ func GetObj(c *gin.Context, obj interface{}) {
 			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
 		)
 	} else {
-		if err := DB().Where("id = ?", id).First(obj).Error; err != nil {
+		if err := DB.Where("id = ?", id).First(obj).Error; err != nil {
 			c.JSON(
 				http.StatusInternalServerError,
 				GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
@@ -150,7 +150,7 @@ func GetObjs(c *gin.Context, query []string, objs interface{}) {
 			param = append(param, "%"+c.Query(v)+"%")
 		}
 	}
-	if err := DB().Where(sql, param...).Limit(pagination.PageSize).Offset((pagination.PageNo - 1) * pagination.PageSize).Find(objs).Count(&pagination.Total).Error; err != nil {
+	if err := DB.Where(sql, param...).Limit(pagination.PageSize).Offset((pagination.PageNo - 1) * pagination.PageSize).Find(objs).Count(&pagination.Total).Error; err != nil {
 		c.JSON(
 			http.StatusOK,
 			GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),

@@ -13,6 +13,7 @@ type Worth struct {
 	Total           string    `gorm:"default:'0.00%';not null;comment:'累计净值'" json:"total"`
 	DailyGrowThRate string    `gorm:"not null;comment:'日增长率'" json:"dailyGrowthRate"`
 	Date            time.Time `gorm:"not null;comment:'净值日志'" json:"date"`
+	Code            string    `gorm:"size:6;not null;comment:'基金代码'" json:"code"`
 }
 
 // TableName set the database table name

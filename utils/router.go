@@ -5,9 +5,11 @@ import (
 	"github.com/life-assistant-go/middleware"
 )
 
-// Router init
-func Router() *gin.Engine {
+// Router global use
+var Router *gin.Engine
+
+func init() {
 	r := gin.New()
 	r.Use(middleware.Logger())
-	return r
+	Router = r
 }
