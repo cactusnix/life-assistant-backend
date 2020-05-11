@@ -26,5 +26,5 @@ Fund module for this system
 
 ### TODO
 
-- [ ] middleware logger
-- [ ] crawler develop
+- [x] middleware logger for gin
+- [x] crawler for fund

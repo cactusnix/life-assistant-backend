@@ -133,6 +133,21 @@ paths:
           description: success
           schema:
             $ref: "#/definitions/FundList"
+  /fund/crawlWorth:
+    post:
+      tags:
+        - fund
+      summary: Crawl worths by fund code
+      parameters:
+        - name: code
+          in: query
+          description: code of fund to return
+          type: string
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/BaseRes"
 produces:
   - application/json
 schemes:
