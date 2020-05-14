@@ -43,12 +43,53 @@ definitions:
           $ref: "#/definitions/Fund"
       msg:
         type: string
+  Order:
+    type: object
+    properties:
+      orderNo:
+        type: string
+      code:
+        type: string
+      holdingDays:
+        type: integer
+      status:
+        type: integer
+      amount:
+        type: string
+      unitCost:
+        type: string
+      costPrice:
+        type: string
+  OrderData:
+    type: object
+    properties:
+      code:
+        type: integer
+      codeMsg:
+        type: string
+      data:
+        $ref: "#/definitions/Order"
+      msg:
+        type: string
+  OrderList:
+    type: object
+    properties:
+      code:
+        type: integer
+      codeMsg:
+        type: string
+      list:
+        type: array
+        items:
+          $ref: "#/definitions/Order"
+      msg:
+        type: string
 info:
   description: Life assistant api
   title: Docs
   version: 0.1.0
 paths:
-  /fund/createFund:
+  /funds:
     post:
       tags:
         - fund
@@ -65,56 +106,6 @@ paths:
           description: success
           schema:
             $ref: "#/definitions/BaseRes"
-  /fund/deleteFund:
-    delete:
-      tags:
-        - fund
-      summary: Delete fund by ID
-      parameters:
-        - name: id
-          in: query
-          description: id of fund to delete
-          required: true
-          type: integer
-      responses:
-        200:
-          description: success
-          schema:
-            $ref: "#/definitions/BaseRes"
-  /fund/updateFund:
-    patch:
-      tags:
-        - fund
-      summary: Update  fund
-      parameters:
-        - name: body
-          in: body
-          description: Fund object that needs to be created
-          required: true
-          schema:
-            $ref: "#/definitions/Fund"
-      responses:
-        200:
-          description: success
-          schema:
-            $ref: "#/definitions/BaseRes"
-  /fund/getFund:
-    get:
-      tags:
-        - fund
-      summary: Find fund by ID
-      parameters:
-        - name: id
-          in: query
-          description: id of fund to return
-          required: true
-          type: integer
-      responses:
-        200:
-          description: success
-          schema:
-            $ref: "#/definitions/FundData"
-  /fund/getFunds:
     get:
       tags:
         - fund
@@ -133,7 +124,59 @@ paths:
           description: success
           schema:
             $ref: "#/definitions/FundList"
-  /fund/crawlWorth:
+  /funds/{id}:
+    delete:
+      tags:
+        - fund
+      summary: Delete fund by ID
+      parameters:
+        - name: id
+          in: path
+          description: id of fund to delete
+          required: true
+          type: integer
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/BaseRes"
+    get:
+      tags:
+        - fund
+      summary: Find fund by ID
+      parameters:
+        - name: id
+          in: path
+          description: id of fund to return
+          required: true
+          type: integer
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/FundData"
+    patch:
+      tags:
+        - fund
+      summary: Update  fund
+      parameters:
+        - name: id
+          in: path
+          description: id of fund to return
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: Fund object that needs to be created
+          required: true
+          schema:
+            $ref: "#/definitions/Fund"
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/BaseRes"
+  /funds/crawlWorth:
     post:
       tags:
         - fund
@@ -143,6 +186,105 @@ paths:
           in: query
           description: code of fund to return
           type: string
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/BaseRes"
+  /orders:
+    post:
+      tags:
+        - order
+      summary: Create new order
+      parameters:
+        - name: body
+          in: body
+          description: Order object that needs to be created
+          required: true
+          schema:
+            $ref: "#/definitions/Order"
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/BaseRes"
+    get:
+      tags:
+        - order
+      summary: Find orders by fund object
+      parameters:
+        - name: code
+          in: query
+          description: code of order to return
+          type: string
+        - name: status
+          in: query
+          description: status of order to return
+          type: string
+        - name: amount
+          in: query
+          description: amount of order to return
+          type: string
+        - name: unitCost
+          in: query
+          description: unitCost of order to return
+          type: string
+        - name: orderTime
+          in: query
+          description: orderTime of order to return
+          type: string
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/OrderList"
+  /orders/{id}:
+    delete:
+      tags:
+        - order
+      summary: Delete order by ID
+      parameters:
+        - name: id
+          in: path
+          description: id of order to delete
+          required: true
+          type: integer
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/BaseRes"
+    get:
+      tags:
+        - order
+      summary: Find order by ID
+      parameters:
+        - name: id
+          in: path
+          description: id of order to return
+          required: true
+          type: integer
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/OrderData"
+    patch:
+      tags:
+        - order
+      summary: Update order
+      parameters:
+        - name: id
+          in: path
+          description: id of order to return
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: Order object that needs to be created
+          required: true
+          schema:
+            $ref: "#/definitions/Order"
       responses:
         200:
           description: success

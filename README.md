@@ -26,5 +26,8 @@ Fund module for this system
 
 ### TODO
 
+- [x] crud for fund 
+- [ ] crud for fund order
 - [x] middleware logger for gin
-- [x] crawler for fund
+- [x] crawler for fund api
+- [ ] crawler for all fund scheduled tasks

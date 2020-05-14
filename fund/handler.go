@@ -48,3 +48,43 @@ func CreateOrder(c *gin.Context) {
 	var order Order
 	utils.CreateObj(c, &order)
 }
+
+// DeleteOrder delete order record
+func DeleteOrder(c *gin.Context) {
+	var order Order
+	utils.DeleteObj(c, &order)
+}
+
+// UpdateOrder update order record
+func UpdateOrder(c *gin.Context) {
+	var order Order
+	form := []string{
+		"code",
+		"status",
+		"amount",
+		"unitCost",
+		"costPrice",
+		"orderTime",
+	}
+	utils.UpdateObj(c, form, &order)
+}
+
+// GetOrder get order record
+func GetOrder(c *gin.Context) {
+	var order Order
+	utils.GetObj(c, &order)
+}
+
+// GetOrders get order records
+func GetOrders(c *gin.Context) {
+	var orders []Order
+	query := []string{
+		"code",
+		"status",
+		"amount",
+		"unitCost",
+		"costPrice",
+		"orderTime",
+	}
+	utils.GetObjs(c, query, &orders)
+}

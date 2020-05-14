@@ -34,7 +34,7 @@ func CreateObj(c *gin.Context, obj interface{}) {
 
 // DeleteObj Delete obj
 func DeleteObj(c *gin.Context, obj interface{}) {
-	if id, err := strconv.Atoi(c.Query("id")); err != nil {
+	if id, err := strconv.Atoi(c.Param("id")); err != nil {
 		c.JSON(
 			http.StatusBadRequest,
 			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
@@ -58,16 +58,16 @@ func DeleteObj(c *gin.Context, obj interface{}) {
 
 // UpdateObj update obj
 func UpdateObj(c *gin.Context, form []string, obj interface{}) {
-	var param map[string]interface{}
-	if id, err := strconv.Atoi(c.Query("id")); err != nil {
+	param := make(map[string]interface{})
+	if id, err := strconv.Atoi(c.Param("id")); err != nil {
 		c.JSON(
 			http.StatusBadRequest,
 			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
 		)
 	} else {
 		for _, v := range form {
-			if c.PostForm("v") != "" {
-				param[v] = c.PostForm("v")
+			if c.PostForm(v) != "" {
+				param[v] = c.PostForm(v)
 			}
 		}
 		if err := DB.Where("id = ?", id).Model(obj).Updates(param).Error; err != nil {
@@ -88,7 +88,7 @@ func UpdateObj(c *gin.Context, form []string, obj interface{}) {
 
 // GetObj get obj
 func GetObj(c *gin.Context, obj interface{}) {
-	if id, err := strconv.Atoi(c.Query("id")); err != nil {
+	if id, err := strconv.Atoi(c.Param("id")); err != nil {
 		c.JSON(
 			http.StatusBadRequest,
 			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),

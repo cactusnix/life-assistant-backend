@@ -12,14 +12,22 @@ import (
 // Router init router
 func Router() {
 	port := ":" + utils.Config.GetString("server.port")
-	r1 := utils.Router.Group("/fund")
+	r1 := utils.Router.Group("/v1/funds")
 	{
-		r1.POST("/createFund", fund.CreateFund)
-		r1.DELETE("/deleteFund", fund.DeleteFund)
-		r1.PATCH("/updateFund", fund.UpdateFund)
-		r1.GET("/getFund", fund.GetFund)
-		r1.GET("/getFunds", fund.GetFunds)
+		r1.POST("/", fund.CreateFund)
+		r1.DELETE("/:id", fund.DeleteFund)
+		r1.PATCH("/:id", fund.UpdateFund)
+		r1.GET("/:id", fund.GetFund)
+		r1.GET("/", fund.GetFunds)
 		r1.POST("/crawlWorth", crawler.CrawlWorth)
+	}
+	r2 := utils.Router.Group("/v1/orders")
+	{
+		r2.POST("/", fund.CreateOrder)
+		r2.DELETE("/:id", fund.DeleteOrder)
+		r2.PATCH("/:id", fund.UpdateOrder)
+		r2.GET("/:id", fund.GetOrder)
+		r2.GET("/", fund.GetOrders)
 	}
 	s := &http.Server{
 		Addr:           port,
