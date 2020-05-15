@@ -9,6 +9,8 @@ import (
 var Router *gin.Engine
 
 func init() {
+	// release mode
+	// gin.SetMode(gin.ReleaseMode)
 	r := gin.New()
 	r.Use(middleware.Logger())
 	Router = r

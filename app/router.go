@@ -6,6 +6,7 @@ import (
 
 	"github.com/life-assistant-go/crawler"
 	"github.com/life-assistant-go/fund"
+	"github.com/life-assistant-go/tag"
 	"github.com/life-assistant-go/utils"
 )
 
@@ -28,6 +29,14 @@ func Router() {
 		r2.PATCH("/:id", fund.UpdateOrder)
 		r2.GET("/:id", fund.GetOrder)
 		r2.GET("/", fund.GetOrders)
+	}
+	r3 := utils.Router.Group("/v1/tags")
+	{
+		r3.POST("/", tag.CreateTag)
+		r3.DELETE("/:id", tag.DeleteTag)
+		r3.PATCH("/:id", tag.UpdateTag)
+		r3.GET("/:id", tag.GetTag)
+		r3.GET("/", tag.GetTags)
 	}
 	s := &http.Server{
 		Addr:           port,
