@@ -26,6 +26,7 @@ Fund module for this system
 
 ### TODO
 
+- [] general crud 
 - [x] crud for fund 
 - [x] crud for fund order
 - [ ] crud for bill
