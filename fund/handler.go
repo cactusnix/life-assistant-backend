@@ -20,9 +20,9 @@ func DeleteFund(c *gin.Context) {
 // UpdateFund update
 func UpdateFund(c *gin.Context) {
 	var fund Fund
-	form := []string{
-		"name",
-		"code",
+	form := map[string]string{
+		"name": "string",
+		"code": "string",
 	}
 	utils.UpdateObj(c, form, &fund)
 }
@@ -36,9 +36,9 @@ func GetFund(c *gin.Context) {
 // GetFunds get fund list
 func GetFunds(c *gin.Context) {
 	var funds []Fund
-	query := []string{
-		"name",
-		"code",
+	query := map[string]bool{
+		"name": true,
+		"code": true,
 	}
 	utils.GetObjs(c, query, &funds)
 }
@@ -58,13 +58,13 @@ func DeleteOrder(c *gin.Context) {
 // UpdateOrder update order record
 func UpdateOrder(c *gin.Context) {
 	var order Order
-	form := []string{
-		"code",
-		"status",
-		"amount",
-		"unitCost",
-		"costPrice",
-		"orderTime",
+	form := map[string]string{
+		"code":      "string",
+		"status":    "int",
+		"amount":    "string",
+		"unitCost":  "string",
+		"costPrice": "string",
+		"orderTime": "string",
 	}
 	utils.UpdateObj(c, form, &order)
 }
@@ -78,13 +78,13 @@ func GetOrder(c *gin.Context) {
 // GetOrders get order records
 func GetOrders(c *gin.Context) {
 	var orders []Order
-	query := []string{
-		"code",
-		"status",
-		"amount",
-		"unitCost",
-		"costPrice",
-		"orderTime",
+	query := map[string]bool{
+		"code":      true,
+		"status":    false,
+		"amount":    true,
+		"unitCost":  true,
+		"costPrice": true,
+		"orderTime": true,
 	}
 	utils.GetObjs(c, query, &orders)
 }

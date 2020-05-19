@@ -57,7 +57,7 @@ func DeleteObj(c *gin.Context, obj interface{}) {
 }
 
 // UpdateObj update obj
-func UpdateObj(c *gin.Context, form []string, obj interface{}) {
+func UpdateObj(c *gin.Context, form map[string]string, obj interface{}) {
 	param := make(map[string]interface{})
 	if id, err := strconv.Atoi(c.Param("id")); err != nil {
 		c.JSON(
@@ -65,9 +65,22 @@ func UpdateObj(c *gin.Context, form []string, obj interface{}) {
 			GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
 		)
 	} else {
-		for _, v := range form {
-			if c.PostForm(v) != "" {
-				param[v] = c.PostForm(v)
+		for k, v := range form {
+			if c.PostForm(k) != "" {
+				switch v {
+				// temporarily used
+				case "int":
+					if temp, err := strconv.Atoi(c.PostForm(k)); err != nil {
+						c.JSON(
+							http.StatusBadRequest,
+							GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
+						)
+					} else {
+						param[k] = temp
+					}
+				default:
+					param[k] = c.PostForm(k)
+				}
 			}
 		}
 		if err := DB.Where("id = ?", id).Model(obj).Updates(param).Error; err != nil {
@@ -112,7 +125,7 @@ func GetObj(c *gin.Context, obj interface{}) {
 }
 
 // GetObjs get objs
-func GetObjs(c *gin.Context, query []string, objs interface{}) {
+func GetObjs(c *gin.Context, query map[string]bool, objs interface{}) {
 	var (
 		sql        string
 		param      []interface{}
@@ -139,17 +152,17 @@ func GetObjs(c *gin.Context, query []string, objs interface{}) {
 		)
 		return
 	}
-	length := len(query)
-	for i, v := range query {
-		if c.Query(v) != "" {
-			if i < length-1 {
-				sql += v + " like ? and "
+	for k, v := range query {
+		if c.Query(k) != "" {
+			sql += k + " like ? and "
+			if v {
+				param = append(param, "%"+c.Query(k)+"%")
 			} else {
-				sql += v + " like ?"
+				param = append(param, c.Query(k))
 			}
-			param = append(param, "%"+c.Query(v)+"%")
 		}
 	}
+	sql = sql[:len(sql)-5]
 	if err := DB.Where(sql, param...).Limit(pagination.PageSize).Offset((pagination.PageNo - 1) * pagination.PageSize).Find(objs).Count(&pagination.Total).Error; err != nil {
 		c.JSON(
 			http.StatusOK,

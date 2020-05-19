@@ -20,9 +20,9 @@ func DeleteTag(c *gin.Context) {
 // UpdateTag update tag
 func UpdateTag(c *gin.Context) {
 	var tag Tag
-	form := []string{
-		"name",
-		"type",
+	form := map[string]string{
+		"name": "string",
+		"type": "int",
 	}
 	utils.UpdateObj(c, form, &tag)
 }
@@ -36,9 +36,9 @@ func GetTag(c *gin.Context) {
 // GetTags get tags
 func GetTags(c *gin.Context) {
 	var tags []Tag
-	query := []string{
-		"name",
-		"type",
+	query := map[string]bool{
+		"name": true,
+		"type": false,
 	}
 	utils.GetObjs(c, query, &tags)
 }
