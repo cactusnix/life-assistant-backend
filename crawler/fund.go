@@ -100,9 +100,15 @@ func requestWorth(fundCode string, pageNo string, pageSize string, startDate str
 
 	doc.Find("tbody>tr").Each(func(i int, s *goquery.Selection) {
 		temp := make([]fund.Worth, 1)
-		temp[0].Unit = s.Find("td:nth-child(2)").Text()
-		temp[0].Total = s.Find("td:nth-child(3)").Text()
-		temp[0].DailyGrowThRate = s.Find("td:nth-child(4)").Text()
+		temp[0].Unit, _ = strconv.ParseFloat(s.Find("td:nth-child(2)").Text(), 64)
+		temp[0].Total, _ = strconv.ParseFloat(s.Find("td:nth-child(3)").Text(), 64)
+		rateText := s.Find("td:nth-child(4)").Text()
+		if strings.Contains(rateText, "%") {
+			rate, _ := strconv.ParseFloat(rateText[0:len(rateText)-1], 64)
+			temp[0].DailyGrowThRate = rate / 100
+		} else {
+			temp[0].DailyGrowThRate = 0.0000
+		}
 		date, _ := time.ParseInLocation("2006-01-02 15:04:05", s.Find("td:nth-child(1)").Text()+" 15:00:00", time.Local)
 		temp[0].Date = date
 		temp[0].Code = fundCode

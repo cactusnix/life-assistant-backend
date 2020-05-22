@@ -43,6 +43,12 @@ definitions:
           $ref: "#/definitions/Fund"
       msg:
         type: string
+      pageNo:
+        type: integer
+      pageSize:
+        type: integer
+      total:
+        type: integer
   Order:
     type: object
     properties:
@@ -84,6 +90,49 @@ definitions:
           $ref: "#/definitions/Order"
       msg:
         type: string
+      pageNo:
+        type: integer
+      pageSize:
+        type: integer
+      total:
+        type: integer
+  Tag:
+    type: object
+    properties:
+      name:
+        type: string
+      type:
+        type: integer
+  TagData:
+    type: object
+    properties:
+      code:
+        type: integer
+      codeMsg:
+        type: string
+      data:
+        $ref: "#/definitions/Tag"
+      msg:
+        type: string
+  TagList:
+    type: object
+    properties:
+      code:
+        type: integer
+      codeMsg:
+        type: string
+      list:
+        type: array
+        items:
+          $ref: "#/definitions/Tag"
+      msg:
+        type: string
+      pageNo:
+        type: integer
+      pageSize:
+        type: integer
+      total:
+        type: integer
 info:
   description: Life assistant api
   title: Docs
@@ -119,6 +168,14 @@ paths:
           in: query
           description: name of fund to return
           type: string
+        - name: pageNo
+          in: query
+          description: pageNo of tag to return
+          type: integer
+        - name: pageSize
+          in: query
+          description: pageSize fo tag to return
+          type: integer
       responses:
         200:
           description: success
@@ -233,6 +290,14 @@ paths:
           in: query
           description: orderTime of order to return
           type: string
+        - name: pageNo
+          in: query
+          description: pageNo of tag to return
+          type: integer
+        - name: pageSize
+          in: query
+          description: pageSize fo tag to return
+          type: integer
       responses:
         200:
           description: success
@@ -285,6 +350,101 @@ paths:
           required: true
           schema:
             $ref: "#/definitions/Order"
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/BaseRes"
+  /tags:
+    post:
+      tags:
+        - tag
+      summary: Create new tag
+      parameters:
+        - name: body
+          in: body
+          description: Tag object that needs to be created
+          required: true
+          schema:
+            $ref: "#/definitions/Tag"
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/BaseRes"
+    get:
+      tags:
+        - tag
+      summary: Find tags by fund object
+      parameters:
+        - name: name
+          in: query
+          description: name of tag to return
+          type: string
+        - name: type
+          in: query
+          description: type of tag to return
+          type: integer
+        - name: pageNo
+          in: query
+          description: pageNo of tag to return
+          type: integer
+        - name: pageSize
+          in: query
+          description: pageSize fo tag to return
+          type: integer
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/TagList"
+  /tags/{id}:
+    delete:
+      tags:
+        - tag
+      summary: Delete tag by ID
+      parameters:
+        - name: id
+          in: path
+          description: id of tag to delete
+          required: true
+          type: integer
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/BaseRes"
+    get:
+      tags:
+        - tag
+      summary: Find tag by ID
+      parameters:
+        - name: id
+          in: path
+          description: id of tag to return
+          required: true
+          type: integer
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: "#/definitions/OrderData"
+    patch:
+      tags:
+        - tag
+      summary: Update tag
+      parameters:
+        - name: id
+          in: path
+          description: id of tag to return
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: Tag object that needs to be updated
+          required: true
+          schema:
+            $ref: "#/definitions/Tag"
       responses:
         200:
           description: success
