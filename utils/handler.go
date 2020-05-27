@@ -42,7 +42,7 @@ func DeleteObj(c *gin.Context, obj interface{}) {
 	} else {
 		if err := DB.Where("id = ?", id).Find(obj).Delete(obj).Error; err != nil {
 			c.JSON(
-				http.StatusInternalServerError,
+				http.StatusBadRequest,
 				GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
 			)
 		} else {
@@ -109,7 +109,7 @@ func GetObj(c *gin.Context, obj interface{}) {
 	} else {
 		if err := DB.Where("id = ?", id).First(obj).Error; err != nil {
 			c.JSON(
-				http.StatusInternalServerError,
+				http.StatusBadRequest,
 				GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
 			)
 		} else {

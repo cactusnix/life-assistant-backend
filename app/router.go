@@ -4,6 +4,8 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/life-assistant-go/article"
+
 	"github.com/life-assistant-go/crawler"
 	"github.com/life-assistant-go/fund"
 	"github.com/life-assistant-go/tag"
@@ -37,6 +39,10 @@ func Router() {
 		r3.PATCH("/:id", tag.UpdateTag)
 		r3.GET("/:id", tag.GetTag)
 		r3.GET("/", tag.GetTags)
+	}
+	r4 := utils.Router.Group("/v1/articles")
+	{
+		r4.POST("/initArticleDir", article.InitArticleDir)
 	}
 	s := &http.Server{
 		Addr:           port,

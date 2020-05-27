@@ -1,6 +1,7 @@
 package app
 
 import (
+	"github.com/life-assistant-go/article"
 	"github.com/life-assistant-go/fund"
 	"github.com/life-assistant-go/tag"
 	"github.com/life-assistant-go/utils"
@@ -34,5 +35,12 @@ func DBTable() {
 		utils.DB.AutoMigrate(&tag.Tag{})
 	} else {
 		utils.DB.CreateTable(&tag.Tag{})
+	}
+
+	// article table
+	if utils.DB.HasTable(&article.Article{}) {
+		utils.DB.AutoMigrate(&article.Article{})
+	} else {
+		utils.DB.CreateTable(&article.Article{})
 	}
 }

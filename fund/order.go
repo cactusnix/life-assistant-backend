@@ -8,7 +8,7 @@ import (
 
 // Order fund record model
 type Order struct {
-	base.Model
+	base.Database
 	OrderNo     string    `gorm:"size:20;not null;comment:'订单编号'" form:"orderNo" json:"orderNo" binding:"required"`
 	Code        string    `gorm:"size:6;not null;comment:'基金代码'" form:"code" json:"code" binding:"required"`
 	HoldingDays int       `gorm:"default:0;not null;comment:'基金持有天数'" form:"holdingDays" json:"holdingDays"`

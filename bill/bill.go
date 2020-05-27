@@ -6,7 +6,7 @@ import (
 
 // Bill table struct
 type Bill struct {
-	base.Model
+	base.Database
 	billNo string
 }
 

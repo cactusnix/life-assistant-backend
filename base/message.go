@@ -18,6 +18,8 @@ const (
 	ReadSuccess = "successfully read"
 	// CrawlSuccess msg
 	CrawlSuccess = "successfully crawl"
+	// ArticleDirSuccess msg
+	ArticleDirSuccess = "successfully initialize the article in the directory"
 )
 
 const (

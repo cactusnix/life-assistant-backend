@@ -31,6 +31,7 @@ Fund module for this system
 - [x] crud for fund order
 - [ ] crud for bill
 - [x] crud for tag
+- [ ] crud for article
 - [x] middleware logger for gin
 - [x] crawler for fund api
 - [ ] crawler for all fund scheduled tasks

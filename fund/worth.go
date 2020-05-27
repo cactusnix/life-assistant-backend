@@ -8,7 +8,7 @@ import (
 
 // Worth 基金记录对象
 type Worth struct {
-	base.Model
+	base.Database
 	Unit            float64   `gorm:"type:decimal(5,4);not null;comment:'单位净值'" json:"unit"`
 	Total           float64   `gorm:"type:decimal(5,4);not null;comment:'累计净值'" json:"total"`
 	DailyGrowThRate float64   `gorm:"type:decimal(5,4);not null;comment:'日增长率'" json:"dailyGrowthRate"`
