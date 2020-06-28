@@ -35,3 +35,6 @@ Fund module for this system
 - [x] middleware logger for gin
 - [x] crawler for fund api
 - [ ] crawler for all fund scheduled tasks
+
+### Optimization
+- [ ] user transaction for multiple crud

@@ -34,8 +34,6 @@ func ForWorth(fundCode string) error {
 	var worth fund.Worth
 	if err := utils.DB.Where("code = ?", fundCode).Find(&worth).Count(&count).Error; gorm.IsRecordNotFoundError(err) {
 		count = 0
-	} else if err != nil {
-		return err
 	}
 	if count > 0 {
 		oneHour, _ := time.ParseDuration("24h")
@@ -56,7 +54,6 @@ func ForWorth(fundCode string) error {
 			worths = append(results, worths...)
 		}
 	}
-
 	for i, v := range worths {
 		log.Println("Review", i, v.Unit, v.Total, v.DailyGrowThRate, v.Date)
 		if err := utils.DB.Create(&v).Error; err != nil {

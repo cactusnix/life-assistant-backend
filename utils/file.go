@@ -2,6 +2,7 @@ package utils
 
 import (
 	"io/ioutil"
+	"path"
 	"strconv"
 	"syscall"
 	"time"
@@ -22,6 +23,7 @@ func GetFilesInfo(dirname string) ([]base.File, error) {
 
 // GetAllFiles get file info
 func GetAllFiles(dirname string, results *[]base.File) error {
+	dirname = path.Clean(dirname)
 	files, err := ioutil.ReadDir(dirname)
 	if err != nil {
 		return err
@@ -35,11 +37,16 @@ func GetAllFiles(dirname string, results *[]base.File) error {
 				sys := v.Sys()
 				switch dataType := sys.(type) {
 				case *syscall.Stat_t:
+					filePath := dirname + "/" + v.Name()
+					fullName := v.Name()
+					ext := path.Ext(filePath)
 					*results = append(*results, base.File{
-						Name:     v.Name(),
-						Size:     GetFileSize(int(v.Size())),
-						Created:  timespecToTime(dataType.Ctimespec),
-						Modified: v.ModTime(),
+						Name:      fullName[:len(fullName)-len(ext)],
+						Extension: ext[1:],
+						Size:      GetFileSize(int(v.Size())),
+						Path:      filePath,
+						Created:   timespecToTime(dataType.Ctimespec),
+						Modified:  v.ModTime(),
 					})
 				default:
 					log.Panic("unexpected type")

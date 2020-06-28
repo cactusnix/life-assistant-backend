@@ -19,7 +19,7 @@ func InitArticleDir(c *gin.Context) {
 			)
 		}
 		for _, v := range results {
-			if err := utils.DB.Create(&Article{File: v, Title: "", Tags: ""}).Error; err != nil {
+			if err := utils.DB.Create(&Article{File: v}).Error; err != nil {
 				c.JSON(
 					http.StatusBadRequest,
 					utils.GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),

@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
 	"github.com/life-assistant-go/base"
 )
 
@@ -83,10 +84,17 @@ func UpdateObj(c *gin.Context, form map[string]string, obj interface{}) {
 				}
 			}
 		}
+		if err := DB.Where("id = ?", id).Find(obj).Error; gorm.IsRecordNotFoundError(err) {
+			c.JSON(
+				http.StatusBadRequest,
+				GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
+			)
+			return
+		}
 		if err := DB.Where("id = ?", id).Model(obj).Updates(param).Error; err != nil {
 			c.JSON(
 				http.StatusBadRequest,
-				GenerateRes("paramError", map[string]interface{}{"error": err.Error()}),
+				GenerateRes("sqlError", map[string]interface{}{"error": err.Error()}),
 			)
 		} else {
 			c.JSON(
