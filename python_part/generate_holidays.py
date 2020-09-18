@@ -6,11 +6,16 @@
 #     "remark": "节日备注", # 法定节日 / 传统节日 / 纪念日
 # }
 
-# 由于节日的起始时间有差别，故仅从2020开始生成
+# 由于节日设定的起始时间有差别，故仅从2020开始生成
 # 节日参考百度百科
 
 from datetime import datetime, timedelta
+from bs4 import BeautifulSoup
+import requests
 import sxtwl
+import os
+import json
+import string
 
 
 def get_date_by_number(year, month, day, number, weekday):
@@ -428,8 +433,67 @@ def generate_base_holidays(year):
     return holidays
 
 
-def generate_holidays():
-    print(generate_base_holidays(2020))
+# 爬虫获取放假安排
+def fetch_rest_plan(year):
+    # 仅爬虫 2020 之后的节假日
+    holidays = generate_base_holidays(year)
+    search_file_name = "国务院办公厅关于" + str(year) + "年部分节假日安排的通知"
+    file_url = ""
+    publish_date = ""
+    rest_array = []
+    print("--------------------------------------------")
+    print("Here is query str: ", search_file_name)
+    res = requests.get("http://xxgk.www.gov.cn/search-zhengce",
+                       params={"page_index": 1, "page_size": 10, "title": search_file_name})
+    if res.status_code == 200:
+        if isinstance(res.json()["data"], list):
+            file_url = res.json()["data"][0]["url"]
+            publish_date = res.json()["data"][0]["pubtime"]
+            print("Fetch result: ", file_url, publish_date)
+        else:
+            print("Fetch result: Fetch nothing!")
+    else:
+        print("Request result: Fetch url failed!")
+    if len(file_url) > 0:
+        print("Here is fetch file url", file_url)
+        file_res = requests.get(file_url)
+        file_res.encoding = "utf-8"
+        if file_res.status_code == 200:
+            soup = BeautifulSoup(file_res.text, features="lxml")
+            content = soup.find("td", id="UCAP-CONTENT", class_="b12c")
+            groups = content.find_all(
+                "p", style="margin-top: 0px; margin-bottom: 0px; text-indent: 2em; text-align: justify; font-family: 宋体;")
+            for it in groups:
+                sub_str = ["一", "二", "三", "四", "五", "六", "七"]
+                if any(str in it.get_text() for str in sub_str):
+                    rest_array.append(it.get_text())
+        else:
+            print("Request result: Fetch file failed!")
+    if len(rest_array) == 6 | len(rest_array) == 7:
+        print(rest_array)
+    return holidays
 
 
-generate_holidays()
+def generate_json():
+    # start_year = 2020
+    fetch_rest_plan(2019)
+    fetch_rest_plan(2020)
+    # 多加一年 国务院公布的时间在前一年
+    # end_year = datetime.now().year + 1
+    # while start_year <= end_year:
+    # holidays = fetch_rest_plan(start_year)
+    # path = os.path.abspath(".") + "/json"
+    # file_name = str(start_year) + ".json"
+    # file_path = os.path.join(path, file_name)
+    # if os.path.exists(file_path):
+    #     os.remove(file_path)
+    # with open(file_path, "w", encoding="utf-8") as f:
+    #     json.dump({
+    #         "year": start_year,
+    #         "buildDate": datetime.now().strftime("%Y-%-m-%d %H:%M:%S"),
+    #         "holidays": holidays
+    #     }, f, ensure_ascii=False, indent=2)
+    # start_year = start_year + 1
+
+
+generate_json()
