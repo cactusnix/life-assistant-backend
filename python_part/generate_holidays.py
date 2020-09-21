@@ -34,7 +34,7 @@ def genertate_rest_holiday(year, rest_array):
             current_date = datetime(
                 year, int(split_array[0]), int(split_array[1]))
             result.append({
-                "name": var_1,
+                "name": var_1 + "休假",
                 "date": (current_date + timedelta(days=i)).strftime("%Y-%-m-%d"),
                 "isRest": 0,
                 "remark": "法定休假"
@@ -44,7 +44,7 @@ def genertate_rest_holiday(year, rest_array):
             split_array = re.split("、", var_4)
             for it in split_array:
                 result.append({
-                    "name": var_1,
+                    "name": var_1 + "上班",
                     "date": str(year) + "-" + it,
                     "isRest": 2,
                     "remark": "法定上班"
