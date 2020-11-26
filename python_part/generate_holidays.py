@@ -517,7 +517,7 @@ def fetch_rest_plan(year):
     if (len(rest_array) == 6) | (len(rest_array) == 7):
         for it in rest_array:
             sub_1 = re.sub(
-                r"一、|二、|三、|四、|五、|六、|七、|（星期六）|（星期日）|上班|(2.*年)|共|天|放假|(至.*休)|日", "", it)
+                r"一、|二、|三、|四、|五、|六、|七、|（星期六）|（星期日）|上班|(2.*年)|共|天|放假|(至.*休)|(至.*假)|日", "", it)
             sub_2 = re.sub(r"月", "-", sub_1)
             sub_array = re.split("：|。|，", sub_2)
             print(sub_array)
