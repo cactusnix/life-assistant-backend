@@ -10,19 +10,18 @@ const inputValue = $widget.inputValue
 
 exports.init = () => {
   const obj = api.checkAndInit(inputValue)
-  console.log(obj)
   $widget.setTimeline({
-    policy: {
-      afterDate: new Date(
-        new Date().getFullYear(),
-        new Date().getMonth(),
-        new Date().getDate() + 1,
-        0,
-        0,
-        0,
-        0
-      )
-    },
+    // policy: {
+    //   afterDate: new Date(
+    //     new Date().getFullYear(),
+    //     new Date().getMonth(),
+    //     new Date().getDate() + 1,
+    //     0,
+    //     0,
+    //     0,
+    //     0
+    //   )
+    // },
     render: ctx => {
       if (!obj) {
         return emptyWidget()

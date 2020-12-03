@@ -14,6 +14,29 @@ function getDateTypeView(ctx, name, dateType, diffObj) {
   const dateTypeText2 = [$l10n('ALREADY_EXPERIENCE'), $l10n('STILL_LEFT')][
     dateType
   ]
+  let viewList = []
+  const dataList = [diffObj.weeksAll, diffObj.daysAll, diffObj.hoursAll]
+  const textList = [$l10n('WEEK'), $l10n('DAY'), $l10n('HOUR')]
+  dataList.forEach((v, i) => {
+    viewList.push({
+      type: 'text',
+      props: {
+        text: v + textList[i],
+        padding: $insets(10, 10, 10, 10),
+        font: $font('bold', fonts.small),
+        background: {
+          type: 'color',
+          props: {
+            color: ctx.isDarkMode ? $color('#57606f') : $color('#dfe4ea'),
+            cornerRadius: {
+              value: 10,
+              style: 1
+            }
+          }
+        }
+      }
+    })
+  })
   return {
     type: 'vstack',
     props: {
@@ -128,64 +151,7 @@ function getDateTypeView(ctx, name, dateType, diffObj) {
                 alignment: $widget.alignment.leading
               }
             },
-            views: [
-              {
-                type: 'text',
-                props: {
-                  text: diffObj.weeksAll + '周',
-                  padding: $insets(10, 10, 10, 10),
-                  font: $font('bold', fonts.small),
-                  background: {
-                    type: 'color',
-                    props: {
-                      color: $color('#57606f'),
-                      cornerRadius: {
-                        value: 10,
-                        style: 1
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                type: 'text',
-                props: {
-                  text: diffObj.daysAll + '天',
-                  padding: $insets(10, 10, 10, 10),
-                  font: $font('bold', fonts.small),
-                  background: {
-                    type: 'color',
-                    props: {
-                      color: ctx.isDarkMode
-                        ? $color('#57606f')
-                        : $color('#ced6e0'),
-                      cornerRadius: {
-                        value: 10,
-                        style: 1
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                type: 'text',
-                props: {
-                  text: diffObj.hoursAll + '小时',
-                  padding: $insets(10, 10, 10, 10),
-                  font: $font('bold', fonts.small),
-                  background: {
-                    type: 'color',
-                    props: {
-                      color: $color('#57606f'),
-                      cornerRadius: {
-                        value: 10,
-                        style: 1
-                      }
-                    }
-                  }
-                }
-              }
-            ]
+            views: viewList
           }
         ]
       }
