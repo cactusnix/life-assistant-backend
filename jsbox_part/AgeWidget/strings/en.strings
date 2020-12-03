@@ -1,4 +1,6 @@
 "EMPTY_MSG" = "Please input right JSON!";
+"ALREADY_EXPERIENCE" = "already experience";
+"STILL_LEFT" = "still left";
 "LIVE" = "live";
 "STILL_HAVE" = "still have";
 "YEAR" = "years";

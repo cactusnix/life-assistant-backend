@@ -1,4 +1,6 @@
 "EMPTY_MSG" = "请配置正确的JSON！";
+"ALREADY_EXPERIENCE" = "已经经历了";
+"STILL_LEFT" = "现在还剩下";
 "LIVE" = "生活了";
 "STILL_HAVE" = "还有";
 "YEAR" = "年";

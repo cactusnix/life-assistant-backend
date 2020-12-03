@@ -32,6 +32,7 @@ function getDayByMonth(year, month) {
 // 获取差值对象
 function getDateDiff(startDate, endDate) {
   let result = []
+  const diffSeconds = (endDate.getTime() - startDate.getTime()) / 1000
   const year = endDate.getFullYear() - startDate.getFullYear()
   const month = endDate.getMonth() - startDate.getMonth()
   const day = endDate.getDate() - startDate.getDate()
@@ -46,10 +47,18 @@ function getDateDiff(startDate, endDate) {
       result.push(v + '')
     }
   })
+  const weeks = diffSeconds / (24 * 60 * 60 * 7)
+  const weeksAll = Math.trunc(weeks)
+  const daysAll = Math.trunc((weeks - weeksAll) * 7)
+  const hoursAll = Math.trunc(((weeks - weeksAll) * 7 - daysAll) * 24)
+  // 直接去除小数点
   return {
     year: result[2],
     month: result[1],
-    day: result[0]
+    day: result[0],
+    weeksAll: Math.trunc(weeks),
+    daysAll: daysAll,
+    hoursAll: hoursAll
   }
 }
 

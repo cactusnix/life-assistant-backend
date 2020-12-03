@@ -4,9 +4,9 @@ const emptyWidget = require('./widget/empty')
 const smallWidget = require('./widget/small')
 const mediumWidget = require('./widget/medium')
 const api = require('./api')
-// const inputValue = $widget.inputValue
-const inputValue =
-  '{ "birthDate": "1996/8/1 9:0:0", "dateType": 0, "name": "cactusnix" }'
+const inputValue = $widget.inputValue
+// const inputValue =
+//   '{ "birthDate": "1996/8/1 9:0:0", "dateType": 1, "name": "cactusnix" }'
 
 exports.init = () => {
   const obj = api.checkAndInit(inputValue)
