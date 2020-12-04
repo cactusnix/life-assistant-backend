@@ -33,3 +33,7 @@
 - dateType: 可选/默认值 0/number, 0 表示累计模式, 1 表示倒计时模式
 - deathDate: 可选/默认 80 岁/string, 和 birthday 一样的格式
 ```
+
+### 运行截图
+
+[iOS 14 小组件 Age Widget - 基于 JSBox](https://cactusnix.github.io/posts/ios-14-小组件-age-widget-基于-jsbox/)
