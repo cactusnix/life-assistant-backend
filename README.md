@@ -4,7 +4,7 @@
 
 ### JSBox Part
 
-1. [Age Widget](jsbox_part/AgeWidget/README.md)
+1. [Age Widget](jsbox_part/AgeWidget)
 
 ### Deno Part
 
