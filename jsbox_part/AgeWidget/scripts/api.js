@@ -112,4 +112,58 @@ function checkAndInit(inputValue) {
   }
 }
 
-exports.checkAndInit = checkAndInit
+// status 0 未结束 1 结束
+function generateWeekView(count, status, isDarkMode) {
+  return new Array(count).fill({
+    type: 'color',
+    props: {
+      color: isDarkMode
+        ? [$color('#93b5e1'), $color('#51adcf')][status]
+        : [$color('#3282b8'), $color('#fe7171')][status],
+      cornerRadius: {
+        value: 3,
+        style: 1
+      }
+    }
+  })
+}
+
+function generateDayView(count, status, isDarkMode) {
+  return new Array(count).fill({
+    type: 'color',
+    props: {
+      color: isDarkMode
+        ? [$color('#968c83'), $color('#d37815')][status]
+        : [$color('#707070'), $color('#61b15a')][status],
+      cornerRadius: {
+        value: 5,
+        style: 1
+      }
+    }
+  })
+}
+
+function generateYearView(date, isDarkMode) {
+  const currentMonth = date.getMonth()
+  let viewList = []
+  for (let i = 0; i < 12; i++) {
+    const days = getDayByMonth(date.getFullYear(), i)
+    if (i < currentMonth) {
+      viewList.push(...generateWeekView(Math.trunc(days / 7), 1, isDarkMode))
+      viewList.push(...generateDayView(days % 7, 1, isDarkMode))
+    } else if (i === currentMonth) {
+      const currentDay = date.getDate()
+      viewList.push(...generateDayView(currentDay, 1, isDarkMode))
+      viewList.push(...generateDayView(days - currentDay, 0, isDarkMode))
+    } else {
+      viewList.push(...generateWeekView(Math.trunc(days / 7), 0, isDarkMode))
+      viewList.push(...generateDayView(days % 7, 0, isDarkMode))
+    }
+  }
+  return viewList
+}
+
+module.exports = {
+  checkAndInit: checkAndInit,
+  generateYearView: generateYearView
+}
