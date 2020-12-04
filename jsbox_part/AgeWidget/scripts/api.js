@@ -63,13 +63,17 @@ function getDateDiff(startDate, endDate) {
 }
 
 // 检查输入值是否符合规范, 减少校验规则, 存在即默认是输入对的, 减少检验逻辑, 只判断是否存在
-// eg: birthDate: 必填/正确/string
+// name: 必填/string
+// birthDate: 必填/正确/string
 // dateType: 可选/默认值0/number, 0表示累计模式, 1表示倒计时模式
 // deathDate: 可选/默认80岁/string, 和birthday一样的格式
 function checkAndInit(inputValue) {
   if (inputValue) {
     try {
       let tempObj = JSON.parse(inputValue)
+      if (!tempObj.name) {
+        return false
+      }
       if (!tempObj.birthDate) {
         return false
       }

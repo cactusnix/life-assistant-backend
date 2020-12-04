@@ -1,10 +1,10 @@
 {
   "info": {
-    "name": "",
+    "name": "AgeWidget",
     "url": "",
     "version": "1.0.0",
-    "author": "",
-    "website": "",
+    "author": "cactusnix",
+    "website": "https://github.com/cactusnix/life-assistant-backend/tree/master/jsbox_part/AgeWidget",
     "types": 0
   },
   "settings": {
