@@ -31,13 +31,17 @@ def genertate_rest_holiday(year, rest_array):
         i = 0
         while i < var_3:
             split_array = re.split("-", var_2)
-            current_date = datetime(
-                year, int(split_array[0]), int(split_array[1]))
+            current_date = datetime(year, int(split_array[0]),
+                                    int(split_array[1]))
             result.append({
-                "name": var_1 + "休假",
-                "date": (current_date + timedelta(days=i)).strftime("%Y-%-m-%d"),
-                "isRest": 0,
-                "remark": "法定休假"
+                "name":
+                var_1 + "休假",
+                "date":
+                (current_date + timedelta(days=i)).strftime("%Y-%-m-%d"),
+                "isRest":
+                0,
+                "remark":
+                "法定休假"
             })
             i = i + 1
         if var_4 != "":
@@ -79,8 +83,8 @@ def generate_base_holidays(year):
     next_metaverse_festival = lunar.getDayByLunar(year, 10, 15, False)
     laba_festival = lunar.getDayByLunar(year, 12, 8, False)
     # 加减推算
-    chinese_new_year_date = datetime(
-        year, chinese_new_year.m, chinese_new_year.d)
+    chinese_new_year_date = datetime(year, chinese_new_year.m,
+                                     chinese_new_year.d)
     little_night_festival = chinese_new_year_date - timedelta(days=2)
     new_year_eve = chinese_new_year_date - timedelta(days=1)
     holidays = [
@@ -92,10 +96,15 @@ def generate_base_holidays(year):
             "remark": "法定节日"
         },
         {
-            "name": "春节",
-            "date": year_str + "-" + str(chinese_new_year.m) + "-" + str(chinese_new_year.d),
-            "isRest": 1,
-            "remark": "法定节日"
+            "name":
+            "春节",
+            "date":
+            year_str + "-" + str(chinese_new_year.m) + "-" +
+            str(chinese_new_year.d),
+            "isRest":
+            1,
+            "remark":
+            "法定节日"
         },
         {
             "name": "清明节",
@@ -110,16 +119,26 @@ def generate_base_holidays(year):
             "remark": "法定节日"
         },
         {
-            "name": "端午节",
-            "date": year_str + "-" + str(dragon_boat_festival.m) + "-" + str(dragon_boat_festival.d),
-            "isRest": 1,
-            "remark": "法定节日"
+            "name":
+            "端午节",
+            "date":
+            year_str + "-" + str(dragon_boat_festival.m) + "-" +
+            str(dragon_boat_festival.d),
+            "isRest":
+            1,
+            "remark":
+            "法定节日"
         },
         {
-            "name": "中秋节",
-            "date": year_str + "-" + str(mid_autumn_festival.m) + "-" + str(mid_autumn_festival.d),
-            "isRest": 1,
-            "remark": "法定节日"
+            "name":
+            "中秋节",
+            "date":
+            year_str + "-" + str(mid_autumn_festival.m) + "-" +
+            str(mid_autumn_festival.d),
+            "isRest":
+            1,
+            "remark":
+            "法定节日"
         },
         {
             "name": "国庆节",
@@ -238,7 +257,7 @@ def generate_base_holidays(year):
         },
         {
             "name": "全国助残日",
-            "date":  get_date_by_number(year, 5, 1, 3, "Sun"),
+            "date": get_date_by_number(year, 5, 1, 3, "Sun"),
             "isRest": 1,
             "remark": "纪念日"
         },
@@ -340,52 +359,90 @@ def generate_base_holidays(year):
         },
         # 传统节日
         {
-            "name": "元宵节",
-            "date": year_str + "-" + str(lantern_festival.m) + "-" + str(lantern_festival.d),
-            "isRest": 1,
-            "remark": "传统节日"
+            "name":
+            "元宵节",
+            "date":
+            year_str + "-" + str(lantern_festival.m) + "-" +
+            str(lantern_festival.d),
+            "isRest":
+            1,
+            "remark":
+            "传统节日"
         },
         {
-            "name": "龙抬头",
-            "date": year_str + "-" + str(dragon_head_up.m) + "-" + str(dragon_head_up.d),
-            "isRest": 1,
-            "remark": "传统节日"
+            "name":
+            "龙抬头",
+            "date":
+            year_str + "-" + str(dragon_head_up.m) + "-" +
+            str(dragon_head_up.d),
+            "isRest":
+            1,
+            "remark":
+            "传统节日"
         },
         {
-            "name": "七夕节",
-            "date": year_str + "-" + str(qixi_festival.m) + "-" + str(qixi_festival.d),
-            "isRest": 1,
-            "remark": "传统节日"
+            "name":
+            "七夕节",
+            "date":
+            year_str + "-" + str(qixi_festival.m) + "-" + str(qixi_festival.d),
+            "isRest":
+            1,
+            "remark":
+            "传统节日"
         },
         {
-            "name": "中元节",
-            "date": year_str + "-" + str(ghost_festival.m) + "-" + str(ghost_festival.d),
-            "isRest": 1,
-            "remark": "传统节日"
+            "name":
+            "中元节",
+            "date":
+            year_str + "-" + str(ghost_festival.m) + "-" +
+            str(ghost_festival.d),
+            "isRest":
+            1,
+            "remark":
+            "传统节日"
         },
         {
-            "name": "重阳节",
-            "date": year_str + "-" + str(double_ninth_festival.m) + "-" + str(double_ninth_festival.d),
-            "isRest": 1,
-            "remark": "传统节日"
+            "name":
+            "重阳节",
+            "date":
+            year_str + "-" + str(double_ninth_festival.m) + "-" +
+            str(double_ninth_festival.d),
+            "isRest":
+            1,
+            "remark":
+            "传统节日"
         },
         {
-            "name": "寒衣节",
-            "date": year_str + "-" + str(winter_clothes_festival.m) + "-" + str(winter_clothes_festival.d),
-            "isRest": 1,
-            "remark": "传统节日"
+            "name":
+            "寒衣节",
+            "date":
+            year_str + "-" + str(winter_clothes_festival.m) + "-" +
+            str(winter_clothes_festival.d),
+            "isRest":
+            1,
+            "remark":
+            "传统节日"
         },
         {
-            "name": "下元节",
-            "date": year_str + "-" + str(next_metaverse_festival.m) + "-" + str(next_metaverse_festival.d),
-            "isRest": 1,
-            "remark": "传统节日"
+            "name":
+            "下元节",
+            "date":
+            year_str + "-" + str(next_metaverse_festival.m) + "-" +
+            str(next_metaverse_festival.d),
+            "isRest":
+            1,
+            "remark":
+            "传统节日"
         },
         {
-            "name": "腊八节",
-            "date": year_str + "-" + str(laba_festival.m) + "-" + str(laba_festival.d),
-            "isRest": 1,
-            "remark": "传统节日"
+            "name":
+            "腊八节",
+            "date":
+            year_str + "-" + str(laba_festival.m) + "-" + str(laba_festival.d),
+            "isRest":
+            1,
+            "remark":
+            "传统节日"
         },
         {
             "name": "小年夜",
@@ -481,7 +538,11 @@ def fetch_rest_plan(year):
     print("--------------------------------------------")
     print("Here is query str: ", search_file_name)
     res = requests.get("http://xxgk.www.gov.cn/search-zhengce",
-                       params={"page_index": 1, "page_size": 10, "title": search_file_name})
+                       params={
+                           "page_index": 1,
+                           "page_size": 10,
+                           "title": search_file_name
+                       })
     if res.status_code == 200:
         if isinstance(res.json()["data"], list):
             file_url = res.json()["data"][0]["url"]
@@ -517,7 +578,8 @@ def fetch_rest_plan(year):
     if (len(rest_array) == 6) | (len(rest_array) == 7):
         for it in rest_array:
             sub_1 = re.sub(
-                r"一、|二、|三、|四、|五、|六、|七、|（星期六）|（星期日）|上班|(2.*年)|共|天|放假|(至.*休)|(至.*假)|日", "", it)
+                r"一、|二、|三、|四、|五、|六、|七、|（星期六）|（星期日）|上班|(2.*年)|共|天|放假|(至.*休)|(至.*假)|日",
+                "", it)
             sub_2 = re.sub(r"月", "-", sub_1)
             sub_array = re.split("：|。|，", sub_2)
             print(sub_array)
@@ -548,11 +610,15 @@ def generate_json():
             except json.decoder.JSONDecodeError:
                 print("Read empty json file!")
         with open(file_path, "w", encoding="utf-8") as f:
-            json.dump({
-                "year": start_year,
-                "buildDate": datetime.now().strftime("%Y-%-m-%d %H:%M:%S"),
-                "holidays": holidays
-            }, f, ensure_ascii=False, indent=2)
+            json.dump(
+                {
+                    "year": start_year,
+                    "buildDate": datetime.now().strftime("%Y-%-m-%d %H:%M:%S"),
+                    "holidays": holidays
+                },
+                f,
+                ensure_ascii=False,
+                indent=2)
         start_year = start_year + 1
 
 
