@@ -122,8 +122,8 @@ function generateWeekView(count, status, isDarkMode) {
     type: 'color',
     props: {
       color: isDarkMode
-        ? [$color('#93b5e1'), $color('#51adcf')][status]
-        : [$color('#3282b8'), $color('#fe7171')][status],
+        ? [$color('#968c83'), $color('#d37815')][status]
+        : [$color('#707070'), $color('#61b15a')][status],
       cornerRadius: {
         value: 3,
         style: 1
