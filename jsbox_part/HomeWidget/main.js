@@ -1,7 +1,7 @@
-// const inputValue = $widget.inputValue
+const inputValue = $widget.inputValue
 
 // 和风天气 key 个人开发者
-const inputValue = '88f64079d81940cb86ac426bd688780a'
+// const inputValue = ''
 
 // 当前日期 格式化11月23日
 const months = [
@@ -242,10 +242,90 @@ $widget.setTimeline({
       }
     } else {
       return {
-        type: 'text',
+        type: 'vstack',
         props: {
-          text: '请配置和风天气个人开发者的key'
-        }
+          frame: {
+            maxWidth: Infinity,
+            maxHeight: Infinity,
+            alignment: $widget.alignment.topLeading
+          },
+          padding: $insets(50, 20, 0, 0),
+          alignment: $widget.verticalAlignment.top
+        },
+        views: [
+          {
+            type: 'text',
+            props: {
+              text: title[0],
+              font: $font('bold', 35)
+            }
+          },
+          {
+            type: 'text',
+            props: {
+              text: title[1],
+              font: $font('bold', 35)
+            }
+          },
+          {
+            type: 'text',
+            props: {
+              text: formatDateStr,
+              font: $font('bold', 15)
+            }
+          },
+          {
+            type: 'text',
+            props: {
+              text: '请配置和风天气个人开发者的key',
+              font: $font(12)
+            }
+          },
+          {
+            type: 'hstack',
+            views: [
+              {
+                type: 'color',
+                props: {
+                  frame: {
+                    width: 3,
+                    height: 15
+                  },
+                  color: $color('#F82D59')
+                }
+              },
+              {
+                type: 'text',
+                props: {
+                  text: formatItem(calendarList[0]),
+                  font: $font(12)
+                }
+              }
+            ]
+          },
+          {
+            type: 'hstack',
+            views: [
+              {
+                type: 'color',
+                props: {
+                  frame: {
+                    width: 3,
+                    height: 15
+                  },
+                  color: $color('#157EFB')
+                }
+              },
+              {
+                type: 'text',
+                props: {
+                  text: reminderList[0].title,
+                  font: $font(12)
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   }
