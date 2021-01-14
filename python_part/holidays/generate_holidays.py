@@ -588,6 +588,8 @@ def fetch_rest_plan(year):
 
 
 def generate_json():
+    # 最基本的节日长度
+    base_length = 63
     start_year = 2020
     # 多加一年 国务院公布的时间在前一年
     end_year = datetime.now().year + 1
@@ -602,7 +604,7 @@ def generate_json():
                     obj = json.load(f)
                     length = len(obj["holidays"])
                     print("共添加节日：", length)
-                    if length > 63:
+                    if length > base_length:
                         start_year = start_year + 1
                         continue
                     else:
