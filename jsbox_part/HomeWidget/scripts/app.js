@@ -1,12 +1,11 @@
 const api = require('./api')
-// const inputValue = $widget.inputValue
+const inputValue = $widget.inputValue
 
 // 和风天气 key 个人开发者
-const inputValue = '{ "weatherKey": "personalkey" }'
+// const inputValue = '{ "weatherKey": "personalkey" }'
 
 exports.init = async () => {
   const currentDate = new Date()
-  currentDate.setMonth(0, 1)
   const obj = api.checkAndInit(inputValue)
   const views = await api.generateWidgetView(currentDate, obj)
   // 时间线
