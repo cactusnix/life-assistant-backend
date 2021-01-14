@@ -5,6 +5,7 @@
 ### JSBox Part
 
 1. [Age Widget](jsbox_part/AgeWidget)
+2. [Home Widget](jsbox_part/HomeWidget)
 
 ### Deno Part
 
