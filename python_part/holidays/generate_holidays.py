@@ -67,6 +67,34 @@ def get_date_by_number(year, month, day, number, weekday):
     return result_date.strftime("%Y-%-m-%d")
 
 
+def fetch_jieqi(year):
+    result = []
+    print("Start fetch 24 jie qi ...")
+    resp_html = requests.get("http://24jieqi.hdjr.org", params={"Year": year})
+    resp_html.encoding = "GBK"
+    if resp_html.status_code == 200:
+        soup = BeautifulSoup(resp_html.text, features="lxml")
+        groups = soup.find_all(class_="JqDiv")
+        if len(groups) > 0:
+            for it in groups:
+                temp = re.split("：| ", it.find("li").get_text())[1]
+                sub = re.sub("日", "", temp)
+                result.append({
+                    "name": it.find("img").attrs["alt"],
+                    "date": re.sub(r"年|月", "-", sub),
+                    "isRest": 1,
+                    "remark": "二十四节气"
+                })
+
+        else:
+            print("Fetch nothing!")
+            return result
+    else:
+        print("Fetch failed!")
+        return result
+    return result
+
+
 def generate_base_holidays(year):
     year_str = str(year)
     lunar = sxtwl.Lunar()
@@ -523,6 +551,7 @@ def generate_base_holidays(year):
             "remark": "世界节日"
         }
     ]
+    holidays.extend(fetch_jieqi(year_str))
     return holidays
 
 
@@ -589,7 +618,7 @@ def fetch_rest_plan(year):
 
 def generate_json():
     # 最基本的节日长度
-    base_length = 63
+    base_length = 87
     start_year = 2020
     # 多加一年 国务院公布的时间在前一年
     end_year = datetime.now().year + 1
