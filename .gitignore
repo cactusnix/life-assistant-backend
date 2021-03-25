@@ -3,3 +3,6 @@
 
 # vscode ignore
 .vscode
+
+# npm ignore
+node_modules
