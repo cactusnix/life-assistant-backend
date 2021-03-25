@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "author": "cactusnix",
+  "iconImage": "https://raw.githubusercontent.com/cyanzhong/xTeko/master/extension-icons/glyphs/icon_057.png",
+  "url": "https://raw.githubusercontent.com/cactusnix/life-assistant-backend/master/jsbox_part/ONE/ONE.js",
+  "website": "https://github.com/cactusnix/life-assistant-backend/tree/master/jsbox_part/ONE",
+  "name": "ONE",
+  "category": "0",
+  "description": "ONE「一个」的小组件"
+}
