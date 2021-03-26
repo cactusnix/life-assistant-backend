@@ -21,6 +21,17 @@ let logoView = {
   },
 };
 $widget.setTimeline({
+  policy: {
+    afterDate: new Date(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      new Date().getDate() + 1,
+      0,
+      0,
+      0,
+      0
+    ),
+  },
   render: (ctx) => {
     if (ctx.family == 2) {
       return {
