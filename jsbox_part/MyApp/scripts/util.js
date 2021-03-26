@@ -14,11 +14,13 @@ function installApp(item, data) {
     icon: item.icon,
     data: $data({ string: data.string }),
     handler: function (success) {
-      let app = $addin.list.find((v) => v.displayName == item.name);
+      const list = $addin.list;
+      let app = list.find((v) => v.displayName == item.name);
       app.version = item.version;
       app.url = item.url;
       app.author = item.author;
       app.website = item.website;
+      $addin.list = list;
       renderIndexView();
       $ui.toast("安装成功");
     },
