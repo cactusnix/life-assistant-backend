@@ -68,10 +68,8 @@ function generateBaseData(resp1, resp2) {
   return data;
 }
 
-// generate image for small view
-function generateImageForSmallView(data) {
-  const width = 58;
-  const height = 58;
+// generate image
+function generateImage(data, circleRadius, circleWidth) {
   let list = [
     {
       colorBack: "#38181C",
@@ -91,14 +89,13 @@ function generateImageForSmallView(data) {
   ];
   return $imagekit.render(
     {
-      size: $size(width, height),
+      size: $size(circleRadius, circleRadius),
     },
     (ctx) => {
       list.forEach((v, i) => {
-        const circleWidth = 5.8;
-        const centerX = width / 2;
-        const centerY = height / 2;
-        const radius = width / 2 - (i + 1) * circleWidth - i * 1.5;
+        const centerX = circleRadius / 2;
+        const centerY = circleRadius / 2;
+        const radius = circleRadius / 2 - (i + 1) * circleWidth - i * 1.5;
         // first
         ctx.strokeColor = $color(v.colorBack);
         ctx.setLineWidth(circleWidth);
@@ -128,65 +125,6 @@ function generateImageForSmallView(data) {
   );
 }
 
-// generate image for medium view
-function generateImageForMediumView(data, displaySize) {
-  const width = displaySize.height - 15;
-  const height = displaySize.height - 15;
-  let list = [
-    {
-      colorBack: "#38181C",
-      colorFront: "#DF0716",
-      percent: data.totalFlowUsed / data.totalFlow,
-    },
-    {
-      colorBack: "#1C371A",
-      colorFront: "#35DB00",
-      percent: data.freeFlowUsed / data.freeFlowTotal,
-    },
-    {
-      colorBack: "#123339",
-      colorFront: "#00C1E1",
-      percent: data.dailyRentFlowUsed / data.dailyRentFlowTotal,
-    },
-  ];
-  return $imagekit.render(
-    {
-      size: $size(width, height),
-    },
-    (ctx) => {
-      list.forEach((v, i) => {
-        const circleWidth = 14;
-        const centerX = width / 2;
-        const centerY = height / 2;
-        const radius = width / 2 - (i + 1) * circleWidth - i * 1.5;
-        // first
-        ctx.strokeColor = $color(v.colorBack);
-        ctx.setLineWidth(circleWidth);
-        ctx.addArc(
-          centerX,
-          centerY,
-          radius,
-          Math.PI * 1.5,
-          Math.PI * 1.5 + Math.PI * 2,
-          false
-        );
-        ctx.strokePath();
-        // second
-        ctx.strokeColor = $color(v.colorFront);
-        ctx.setLineWidth(circleWidth);
-        ctx.addArc(
-          centerX,
-          centerY,
-          radius,
-          Math.PI * 1.5,
-          Math.PI * 1.5 + Math.PI * v.percent * 2,
-          false
-        );
-        ctx.strokePath();
-      });
-    }
-  );
-}
 // generate small view
 function generateSmallView(data, image, displaySize) {
   return {
@@ -355,10 +293,14 @@ $widget.setTimeline({
         const displaySize = ctx.displaySize;
         switch (ctx.family) {
           case 0:
-            const smallImage = generateImageForSmallView(data);
+            const smallImage = generateImage(data, 58, 5.8);
             return generateSmallView(data, smallImage, displaySize);
           case 1:
-            const mediumImage = generateImageForMediumView(data, displaySize);
+            const mediumImage = generateImage(
+              data,
+              displaySize.height - 15,
+              14
+            );
             return generateMediumView(data, mediumImage, displaySize);
           case 2:
             return {};
