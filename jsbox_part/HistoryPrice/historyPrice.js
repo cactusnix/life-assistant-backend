@@ -253,8 +253,6 @@ $ui.render({
               type: "input",
               props: {
                 id: "searchInput",
-                text:
-                  "https://item.m.jd.com/product/70829478912.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share&gx=RnEyxzReYTPYzdRP--seHCZnQKWMb9V6pqE",
                 type: $kbType.search,
                 darkKeyboard: true,
                 placeholder: "请输入或者复制商品的链接",
