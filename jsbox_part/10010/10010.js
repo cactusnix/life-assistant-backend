@@ -305,15 +305,15 @@ if (!$cache.get("cookie")) {
 
 // fetch data
 let resp = await Promise.all([fetchData(url1), fetchData(url2)]);
-
+let resp1 = resp[0].data;
+let resp2 = resp[1].data;
 // cookie valid
 if (resp1 === "999999" || resp2 === "999999") {
   await setCookie();
   resp = await Promise.all([fetchData(url1), fetchData(url2)]);
+  resp1 = resp[0].data;
+  resp2 = resp[1].data;
 }
-
-const resp1 = resp[0].data;
-const resp2 = resp[1].data;
 
 // set timeline
 $widget.setTimeline({
