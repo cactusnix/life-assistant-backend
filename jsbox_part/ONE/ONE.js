@@ -13,7 +13,6 @@ if (!$cache.get("logoImgCache")) {
   $cache.set("logoImgCache", $image(logURL));
 }
 if (!$cache.get("token")) {
-  console.log("here");
   await setToken();
 }
 const apiURL =

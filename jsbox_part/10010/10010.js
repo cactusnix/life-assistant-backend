@@ -1,31 +1,5 @@
-const inputValue = $widget.inputValue;
-
-// any cookie can finish the request
-// this is the index money ...
-const url1 =
-  "https://m.client.10010.com/mobileserviceimportant/home/queryUserInfoSeven";
-const url2 =
-  "https://m.client.10010.com/mobileservicequery/operationservice/queryOcsPackageFlowLeftContent";
-
-// fetch data
-const resp1 = (
-  await $http.request({
-    method: "POST",
-    url: url1,
-    header: {
-      Cookie: inputValue,
-    },
-  })
-).data;
-const resp2 = (
-  await $http.request({
-    method: "POST",
-    url: url2,
-    header: {
-      Cookie: inputValue,
-    },
-  })
-).data;
+// import part
+const moment = require("moment");
 
 // generate base data for reuse
 function generateBaseData(resp1, resp2) {
@@ -141,10 +115,32 @@ function generateSmallView(data, image, displaySize) {
     },
     views: [
       {
-        type: "image",
+        type: "hstack",
         props: {
-          image: image,
+          frame: {
+            maxWidth: Infinity,
+          },
+          alignment: $widget.verticalAlignment.top,
         },
+        views: [
+          {
+            type: "image",
+            props: {
+              image: image,
+            },
+          },
+          {
+            type: "spacer",
+          },
+          {
+            type: "text",
+            props: {
+              text: moment(new Date()).format("HH:mm"),
+              color: $color("#a2b29f"),
+              font: $font(10),
+            },
+          },
+        ],
       },
       {
         type: "spacer",
@@ -276,43 +272,61 @@ function generateMediumView(data, image, displaySize) {
   };
 }
 
+// reuse fetch way
+function fetchData(url) {
+  return $http.request({
+    method: "POST",
+    url: url,
+    header: {
+      Cookie: $cache.get("cookie"),
+    },
+  });
+}
+
+// set cache
+async function setCookie() {
+  const localResp = await $http.get(
+    "http://127.0.0.1:9999/cactusnix?functionID=10010"
+  );
+  $cache.set("cookie", localResp.data.cookie);
+}
+
+// any cookie can finish the request
+// this is the index money ...
+const url1 =
+  "https://m.client.10010.com/mobileserviceimportant/home/queryUserInfoSeven";
+const url2 =
+  "https://m.client.10010.com/mobileservicequery/operationservice/queryOcsPackageFlowLeftContent";
+
+// set cache
+if (!$cache.get("cookie")) {
+  await setCookie();
+}
+
+// fetch data
+const resp = await Promise.all([fetchData(url1), fetchData(url2)]);
+const resp1 = resp[0].data;
+const resp2 = resp[1].data;
+
+// cookie valid
+if (resp1 === "999999" || resp2 === "999999") {
+  await setCookie();
+}
+
 // set timeline
 $widget.setTimeline({
   render: (ctx) => {
-    if (inputValue) {
-      if (resp1 === "999999" || resp2 === "999999") {
-        return {
-          type: "text",
-          props: {
-            text: "Cookie 已经失效，请重新获取并配置。",
-            font: $font(12),
-          },
-        };
-      } else {
-        let data = generateBaseData(resp1, resp2);
-        const displaySize = ctx.displaySize;
-        switch (ctx.family) {
-          case 0:
-            const smallImage = generateImage(data, 58, 5.8);
-            return generateSmallView(data, smallImage, displaySize);
-          case 1:
-            const mediumImage = generateImage(
-              data,
-              displaySize.height - 15,
-              14
-            );
-            return generateMediumView(data, mediumImage, displaySize);
-          case 2:
-            return {};
-        }
-      }
-    } else {
-      return {
-        type: "text",
-        props: {
-          text: "请配置正确的Cookie",
-        },
-      };
+    let data = generateBaseData(resp1, resp2);
+    const displaySize = ctx.displaySize;
+    switch (ctx.family) {
+      case 0:
+        const smallImage = generateImage(data, 58, 5.8);
+        return generateSmallView(data, smallImage, displaySize);
+      case 1:
+        const mediumImage = generateImage(data, displaySize.height - 15, 14);
+        return generateMediumView(data, mediumImage, displaySize);
+      case 2:
+        return {};
     }
   },
 });
