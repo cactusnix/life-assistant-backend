@@ -1,13 +1,29 @@
-const oneURL = "http://m.wufazhuce.com/one";
-let resp = await $http.get(oneURL);
-let token = resp.data
-  .match(/One.token = '.*'/)[0]
-  .split(" = ")[1]
-  .replaceAll("'", "");
-const apiURL = "http://m.wufazhuce.com/one/ajaxlist/0?_token=" + token;
+// set cache
+async function setToken() {
+  const oneURL = "http://m.wufazhuce.com/one";
+  let resp = await $http.get(oneURL);
+  let token = resp.data
+    .match(/One.token = '.*'/)[0]
+    .split(" = ")[1]
+    .replaceAll("'", "");
+  $cache.set("token", token);
+}
+if (!$cache.get("logoImgCache")) {
+  const logURL = "http://image.wufazhuce.com/icon_4.0.png";
+  $cache.set("logoImgCache", $image(logURL));
+}
+if (!$cache.get("token")) {
+  console.log("here");
+  await setToken();
+}
+const apiURL =
+  "http://m.wufazhuce.com/one/ajaxlist/0?_token=" + $cache.get("token");
 let todayResp = await $http.get(apiURL);
+// token invalid
+if (todayResp.data.res != 0) {
+  await setToken();
+}
 let todayData = todayResp.data.data[0];
-const logURL = "http://image.wufazhuce.com/icon_4.0.png";
 let logoView = {
   type: "image",
   props: {
@@ -16,7 +32,7 @@ let logoView = {
       height: 20,
     },
     position: $point(25, 25),
-    image: $image(logURL),
+    image: $cache.get("logoImgCache"),
     resizable: true,
   },
 };
