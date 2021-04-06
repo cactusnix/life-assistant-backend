@@ -1,4 +1,4 @@
-// set cache
+// set token for reuse
 async function setToken() {
   const oneURL = "http://m.wufazhuce.com/one";
   let resp = await $http.get(oneURL);
@@ -8,6 +8,15 @@ async function setToken() {
     .replaceAll("'", "");
   $cache.set("token", token);
 }
+
+// get data for reuse
+function getData() {
+  const apiURL =
+    "http://m.wufazhuce.com/one/ajaxlist/0?_token=" + $cache.get("token");
+  return $http.get(apiURL);
+}
+
+// set cache
 if (!$cache.get("logoImgCache")) {
   const logURL = "http://image.wufazhuce.com/icon_4.0.png";
   $cache.set("logoImgCache", $image(logURL));
@@ -15,14 +24,15 @@ if (!$cache.get("logoImgCache")) {
 if (!$cache.get("token")) {
   await setToken();
 }
-const apiURL =
-  "http://m.wufazhuce.com/one/ajaxlist/0?_token=" + $cache.get("token");
-let todayResp = await $http.get(apiURL);
+
+let todayResp = (await getData()).data;
 // token invalid
-if (todayResp.data.res != 0) {
+if (todayResp.res != 0) {
   await setToken();
+  todayResp = (await getData()).data;
 }
-let todayData = todayResp.data.data[0];
+
+// handle data
 let logoView = {
   type: "image",
   props: {
@@ -35,6 +45,7 @@ let logoView = {
     resizable: true,
   },
 };
+const todayData = todayResp.data[0];
 $widget.setTimeline({
   policy: {
     afterDate: new Date(
