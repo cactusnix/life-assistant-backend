@@ -57,7 +57,7 @@ if (inputValue) {
       let counter_view = {
         type: "text",
         props: {
-          text: `(${counter.toUpperCase()})`,
+          text: `(${counter})`,
           font: $font(10),
           color: $color("#9A9AA1"),
           minimumScaleFactor: 0.5,
@@ -74,7 +74,6 @@ if (inputValue) {
             width: width - 30,
             height: height,
           },
-          widgetURL: url,
         },
         views: [
           {
