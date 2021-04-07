@@ -308,7 +308,12 @@ let resp = await Promise.all([fetchData(url1), fetchData(url2)]);
 let resp1 = resp[0].data;
 let resp2 = resp[1].data;
 // cookie valid
-if (resp1 === "999999" || resp2 === "999999") {
+if (
+  resp1 === "999999" ||
+  resp2 === "999999" ||
+  resp1 === undefined ||
+  resp2 == undefined
+) {
   await setCookie();
   resp = await Promise.all([fetchData(url1), fetchData(url2)]);
   resp1 = resp[0].data;
