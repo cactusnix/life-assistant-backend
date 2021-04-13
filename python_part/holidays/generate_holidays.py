@@ -23,7 +23,7 @@ def genertate_rest_holiday(year, rest_array):
     result = []
     # 默认数据处理后的形式
     # ["title", "10-1", "7", "10-29、9-29"]
-    if (len(rest_array) == 4) | (len(rest_array) == 5):
+    if (len(rest_array) == 4) or (len(rest_array) == 5):
         var_1 = rest_array[0]
         var_2 = rest_array[1]
         var_3 = int(rest_array[2])
@@ -604,7 +604,7 @@ def fetch_rest_plan(year):
             print("Request result: Fetch file failed!")
             return holidays
     # 提高准确程度，经观察默认为 6 or 7
-    if (len(rest_array) == 6) | (len(rest_array) == 7):
+    if (len(rest_array) == 6) or (len(rest_array) == 7):
         for it in rest_array:
             sub_1 = re.sub(
                 r"一、|二、|三、|四、|五、|六、|七、|（星期六）|（星期日）|上班|(2.*年)|共|天|放假|(至.*休)|(至.*假)|日",

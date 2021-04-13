@@ -53,26 +53,29 @@ def lotteryCrawler():
                         totalSaleAmount, v["poolBalanceAfterdraw"].replace(
                             ",", "")
                     ])
-                cursor.execute(
-                    "insert into prize (issue, prize_type, note_number, prize, add_note_number, add_prize) values (%s, %s, %s, %s, %s, %s)",
-                    [
-                        v["lotteryDrawNum"],
-                        v["prizeLevelList"][0]["prizeLevel"],
-                        v["prizeLevelList"][0]["stakeCount"].replace(",", ""),
-                        v["prizeLevelList"][0]["stakeAmount"].replace(",", ""),
-                        v["prizeLevelList"][1]["stakeCount"].replace(",", ""),
-                        v["prizeLevelList"][1]["stakeAmount"].replace(",", "")
-                    ])
-                cursor.execute(
-                    "insert into prize (issue, prize_type, note_number, prize, add_note_number, add_prize) values (%s, %s, %s, %s, %s, %s)",
-                    [
-                        v["lotteryDrawNum"],
-                        v["prizeLevelList"][2]["prizeLevel"],
-                        v["prizeLevelList"][2]["stakeCount"].replace(",", ""),
-                        v["prizeLevelList"][2]["stakeAmount"].replace(",", ""),
-                        v["prizeLevelList"][3]["stakeCount"].replace(",", ""),
-                        v["prizeLevelList"][3]["stakeAmount"].replace(",", "")
-                    ])
+                # time: 2021.04.13 15:37
+                # fix bugs because response changed, only insert 一等奖 and 二等奖
+                for prize_item in v["prizeLevelList"]:
+                    if prize_item["prizeLevel"] == "一等奖" or prize_item[
+                            "prizeLevel"] == "二等奖":
+                        cursor.execute(
+                            "insert into prize (issue, prize_type, note_number, prize, add_note_number, add_prize) values (%s, %s, %s, %s, %s, %s)",
+                            [
+                                v["lotteryDrawNum"], prize_item["prizeLevel"],
+                                prize_item["stakeCount"].replace(",", ""),
+                                prize_item["stakeAmount"].replace(",", ""),
+                                prize_item["stakeCount"].replace(",", ""),
+                                prize_item["stakeAmount"].replace(",", "")
+                            ])
+                        cursor.execute(
+                            "insert into prize (issue, prize_type, note_number, prize, add_note_number, add_prize) values (%s, %s, %s, %s, %s, %s)",
+                            [
+                                v["lotteryDrawNum"], prize_item["prizeLevel"],
+                                prize_item["stakeCount"].replace(",", ""),
+                                prize_item["stakeAmount"].replace(",", ""),
+                                prize_item["stakeCount"].replace(",", ""),
+                                prize_item["stakeAmount"].replace(",", "")
+                            ])
                 conn.commit()
             cursor.close()
             conn.close()
