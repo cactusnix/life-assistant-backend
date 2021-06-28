@@ -4,16 +4,16 @@
 
 Here is some scripts for JSBox, includes App、Widget and so on.
 
-1. [Age Widget](jsbox_part/AgeWidget)
-2. [Home Widget](jsbox_part/HomeWidget)
-3. [ONE Widget](jsbox_part/ONE)
-4. [History Price](jsbox_part/HistoryPrice)
+1. [Age Widget](JSBox/AgeWidget)
+2. [Home Widget](JSBox/HomeWidget)
+3. [ONE Widget](JSBox/ONE)
+4. [History Price](JSBox/HistoryPrice)
 
 ### Python Part
 
 Here is some scripts that use python. Most of them is crawler scripts.
 
-1. [Holiday Generate](python_part/holidays)
+1. [Holiday Generate](Python/holidays)
 
 #### Feature
 
