@@ -23,7 +23,3 @@ Here is some scripts that use python. Most of them is crawler scripts.
 ### MySql Part
 
 Here is sql scripts for other parts.
-
-### Go Part
-
-It has been archived.
