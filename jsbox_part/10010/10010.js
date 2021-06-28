@@ -11,6 +11,8 @@ function generateBaseData(resp1, resp2) {
     totalFlowUsed: 0,
     totalFlow: 0,
   };
+  if (resp2.resources) {
+  }
   let flowList = resp2.resources
     .filter((v) => v.type === "flow")[0]
     .details.filter((v) => v.endDate === "长期有效");
@@ -308,12 +310,7 @@ let resp = await Promise.all([fetchData(url1), fetchData(url2)]);
 let resp1 = resp[0].data;
 let resp2 = resp[1].data;
 // cookie valid
-if (
-  resp1 === "999999" ||
-  resp2 === "999999" ||
-  resp1 === undefined ||
-  resp2 == undefined
-) {
+if (resp1 === "999999" || resp2 === "999999") {
   await setCookie();
   resp = await Promise.all([fetchData(url1), fetchData(url2)]);
   resp1 = resp[0].data;

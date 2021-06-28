@@ -1,6 +1,6 @@
 [
   {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "author": "cactusnix",
     "iconImage": "https://raw.githubusercontent.com/cyanzhong/xTeko/master/extension-icons/glyphs/icon_057.png",
     "url": "https://raw.githubusercontent.com/cactusnix/life-assistant-backend/master/jsbox_part/ONE/ONE.js",
@@ -8,5 +8,35 @@
     "name": "ONE",
     "category": "0",
     "description": "ONE「一个」的小组件"
+  },
+  {
+    "version": "0.1.0",
+    "author": "cactusnix",
+    "iconImage": "https://raw.githubusercontent.com/cyanzhong/xTeko/master/extension-icons/glyphs/icon_004.png",
+    "url": "https://raw.githubusercontent.com/cactusnix/life-assistant-backend/master/jsbox_part/10010/10010.js",
+    "website": "https://github.com/cactusnix/life-assistant-backend/tree/master/jsbox_part/10010",
+    "name": "10010",
+    "category": "0",
+    "description": "中国联通小组件"
+  },
+  {
+    "version": "1.0.0",
+    "author": "cactusnix",
+    "iconImage": "https://raw.githubusercontent.com/cyanzhong/xTeko/master/extension-icons/glyphs/icon_177.png",
+    "url": "https://raw.githubusercontent.com/cactusnix/life-assistant-backend/master/jsbox_part/GitHub/GitHub.js",
+    "website": "https://github.com/cactusnix/life-assistant-backend/tree/master/jsbox_part/GitHub",
+    "name": "GitHub Contribution",
+    "category": "0",
+    "description": "GitHub小组件"
+  },
+  {
+    "version": "0.0.91",
+    "author": "cactusnix",
+    "iconImage": "https://raw.githubusercontent.com/cyanzhong/xTeko/master/extension-icons/glyphs/icon_164.png",
+    "url": "https://raw.githubusercontent.com/cactusnix/life-assistant-backend/master/jsbox_part/HistoryPrice/historyPrice.js",
+    "website": "https://github.com/cactusnix/life-assistant-backend/tree/master/jsbox_part/HistoryPrice",
+    "name": "historyPrice",
+    "category": "2",
+    "description": "历史比价脚本"
   }
 ]

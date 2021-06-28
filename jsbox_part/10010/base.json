@@ -1,0 +1,281 @@
+{
+  "dayDetails": [
+    {
+      "daytime": "20210319",
+      "daynum": "0"
+    },
+    {
+      "daytime": "20210320",
+      "daynum": "1"
+    },
+    {
+      "daytime": "20210322",
+      "daynum": "0"
+    },
+    {
+      "daytime": "20210321",
+      "daynum": "1"
+    },
+    {
+      "daytime": "20210323",
+      "daynum": "1"
+    },
+    {
+      "daytime": "20210324",
+      "daynum": "1"
+    },
+    {
+      "daytime": "20210325",
+      "daynum": "1"
+    },
+    {
+      "daytime": "20210326",
+      "daynum": "1"
+    },
+    {
+      "daytime": "20210317",
+      "daynum": "0"
+    },
+    {
+      "daytime": "20210318",
+      "daynum": "0"
+    }
+  ],
+  "packageId": "90063345",
+  "balancesumqry": "1",
+  "code": "0000",
+  "summary": {
+    "freeFlow": "1858.09",
+    "isSum": "0",
+    "freePercent": "1",
+    "sumfengDing": "200",
+    "usePercent": "1",
+    "remainPercent": "98",
+    "monthNum": "6",
+    "sum": "4470.23",
+    "domesticDailyFlow": "2351.44",
+    "remainFengDing": "200330",
+    "percent": [
+      {
+        "Value": "1",
+        "value": "1"
+      },
+      {
+        "Value": "98",
+        "value": "98"
+      },
+      {
+        "Value": "1",
+        "value": "1"
+      }
+    ]
+  },
+  "sumPercent": "95",
+  "csEntranceUrl": "https://cc.10010.com/cs/ccc/online/redirect/welcome.html?encryptdata=2uzglzqmE%2BHz2eSc%2B%2BwLoJxShKJcYagw0U%2FAH7LklSNzXQ%2F7gY%2BeSun3pVxYFWjzlQSQ2a9vz0xV%0ArliMtvYdjH7qx4xrvc8lEtdzmC%2FfMtcvw16NwW8c2GdWxN%2BfERvL4fa9YiXBbgyDxR%2FoMpJuElFA%0AgRWC0HZtiGs9MZ3oLEyMOUXFBWm6X1Euw2%2FZE999518450wdS98e0GCQX7VhDcBS8Yx8MhPvMk%2Fb%0AkICrp129qv%2BB3WyuWqtMnoBWL3Xuea4I5CMvAyoFJCwpemwr49DHxeZx2HxEluzAp7DJLyRHAkjy%0ALzTJGg%3D%3D",
+  "packageName": "腾讯大王卡",
+  "sum": "4470.23",
+  "useDailyPercent": "53",
+  "balancedetailqry": "1",
+  "Topblock": "1",
+  "usefreePercent": "42",
+  "resources": [
+    {
+      "details": [
+        {
+          "elemType": "3",
+          "use": "106.30",
+          "addupItemCode": "40049",
+          "limited": "0",
+          "resourceType": "46",
+          "remain": "917.69",
+          "feePolicyId": "5856210",
+          "endDate": "长期有效",
+          "addUpItemName": "国内流量日租宝(1.0G)",
+          "resourceSource": "0",
+          "total": "1024.00",
+          "typemark": "1",
+          "xexceedvalue": "0.00",
+          "feePolicyName": "国内1元1G日租宝",
+          "usedPercent": "10"
+        },
+        {
+          "elemType": "3",
+          "use": "1855.78",
+          "addupItemCode": "40008",
+          "limited": "0",
+          "resourceType": "13",
+          "remain": "8384.21",
+          "feePolicyId": "67205820",
+          "endDate": "长期有效",
+          "addUpItemName": "套餐内专享免费流量(10.0G)",
+          "resourceSource": "0",
+          "total": "10240.00",
+          "typemark": "1",
+          "xexceedvalue": "0.00",
+          "feePolicyName": "10GB王卡专属免流包",
+          "usedPercent": "18"
+        },
+        {
+          "elemType": "3",
+          "use": "0.00",
+          "addupItemCode": "40008",
+          "limited": "0",
+          "resourceType": "13",
+          "remain": "30720.00",
+          "feePolicyId": "67205845",
+          "endDate": "长期有效",
+          "addUpItemName": "套餐内专享免费流量(30.0G)",
+          "resourceSource": "0",
+          "total": "30720.00",
+          "typemark": "1",
+          "xexceedvalue": "0.00",
+          "feePolicyName": "30GB王卡专属免流包",
+          "usedPercent": "0"
+        },
+        {
+          "use": "0.03",
+          "endDate": "",
+          "feePolicyName": "电子渠道（手机营业厅、网上营业厅）（免流）",
+          "feePolicyId": "10008",
+          "limited": "1",
+          "elemType": "3",
+          "usedPercent": "0"
+        },
+        {
+          "use": "0.08",
+          "endDate": "",
+          "feePolicyName": "手机音乐（免流）",
+          "feePolicyId": "10010",
+          "limited": "1",
+          "elemType": "3",
+          "usedPercent": "0"
+        },
+        {
+          "use": "0.84",
+          "endDate": "",
+          "feePolicyName": "沃视频（免流）",
+          "feePolicyId": "10112",
+          "limited": "1",
+          "elemType": "3",
+          "usedPercent": "0"
+        },
+        {
+          "use": "0.21",
+          "endDate": "",
+          "feePolicyName": "3G门户（免流）",
+          "feePolicyId": "10002",
+          "limited": "1",
+          "elemType": "3",
+          "usedPercent": "0"
+        },
+        {
+          "use": "1.15",
+          "endDate": "",
+          "feePolicyName": "手机电视（免流）",
+          "feePolicyId": "10006",
+          "limited": "1",
+          "elemType": "3",
+          "usedPercent": "0"
+        }
+      ],
+      "type": "flow",
+      "url": "https://m.client.10010.com/mobileService/query/getNetWorkDetailTip.htm?menuId=000200030004&mobile_c_from=query&tcyl_xd_back_flag=1"
+    },
+    {
+      "details": [
+        {
+          "elemType": "1",
+          "use": "0",
+          "addupItemCode": "40000",
+          "limited": "1",
+          "resourceType": "02",
+          "remain": "0",
+          "feePolicyId": "5788110",
+          "endDate": "长期有效",
+          "addUpItemName": "语音",
+          "resourceSource": "0",
+          "total": "0",
+          "typemark": "1",
+          "xexceedvalue": "0",
+          "feePolicyName": "腾讯大王卡",
+          "usedPercent": "0"
+        },
+        {
+          "elemType": "1",
+          "use": "61",
+          "addupItemCode": "40000",
+          "limited": "0",
+          "resourceType": "02",
+          "remain": "39",
+          "feePolicyId": "67570398",
+          "endDate": "2022年02月28日到期",
+          "addUpItemName": "语音",
+          "resourceSource": "0",
+          "total": "100",
+          "typemark": "1",
+          "xexceedvalue": "0",
+          "feePolicyName": "100分钟国内语音包",
+          "usedPercent": "61"
+        }
+      ],
+      "type": "Voice",
+      "url": "https://m.client.10010.com/mobileService/query/getPhoneByDetailTip.htm?menuId=000200030001&mobile_c_from=query&tcyl_thxd_back_flag=1"
+    },
+    {
+      "details": [
+        {
+          "elemType": "2",
+          "use": "1",
+          "addupItemCode": "40002",
+          "limited": "0",
+          "resourceType": "04",
+          "remain": "4",
+          "feePolicyId": "5788510",
+          "endDate": "2021年04月30日到期",
+          "addUpItemName": "国内短信",
+          "resourceSource": "0",
+          "total": "5",
+          "typemark": "1",
+          "xexceedvalue": "0",
+          "feePolicyName": "短/彩信免费体验包(5条)",
+          "usedPercent": "20"
+        }
+      ],
+      "type": "smsList",
+      "url": ""
+    }
+  ],
+  "businessType": "TxCard",
+  "accountBAR": [
+    {
+      "id": "0cf37008-e648-4004-a371-9708d920ae78",
+      "province": "036",
+      "linkUrl": "https://img.client.10010.com/liuliangbaoliebiaov3/index.html",
+      "paymentType": "1;2",
+      "creator": "YH_songnazb",
+      "creatorProvinceCode": "098",
+      "businessCode": "10026",
+      "createTime": "2021-02-20 16:42:17",
+      "orderNumber": "202",
+      "buttonName": "充流量",
+      "nettype": "01;02;03;04;05;07;08;09;10;11;12;13;14;99",
+      "status": "00"
+    },
+    {
+      "id": "9b7f8a08-000f-4d12-b969-1f69c846bc1b",
+      "province": "036",
+      "linkUrl": "https://img.client.10010.com/taocanbiangeng/index.html?tarNetType=11&tarPayType=2",
+      "paymentType": "1;2",
+      "creator": "YH_songnazb",
+      "creatorProvinceCode": "098",
+      "businessCode": "10026",
+      "createTime": "2021-02-20 16:42:17",
+      "orderNumber": "364",
+      "buttonName": "套餐变更",
+      "nettype": "01;02;03;04;05;07;08;09;10;11;12;13;14;99",
+      "status": "00"
+    }
+  ],
+  "leftMonth": 2,
+  "csImg": "https://m1.img.10010.com/resources/7188192A31B5AE06E41B64DA6D65A9B0/20200110/png/20200110153608.png"
+}
