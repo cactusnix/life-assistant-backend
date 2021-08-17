@@ -1,0 +1,458 @@
+{
+  "Jan": [
+    {
+      "name": "元旦",
+      "date": "1-1",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "新的一年的开始",
+      "isLunar": false
+    },
+    {
+      "name": "中国人民警察节",
+      "date": "1-10",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "110 向人民警察致敬",
+      "isLunar": false
+    },
+    {
+      "name": "春节",
+      "date": "1-1",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "年味何去何从",
+      "isLunar": true
+    },
+    {
+      "name": "元宵节",
+      "date": "1-15",
+      "isRest": false,
+      "type": "农历节日",
+      "remark": "吃元宵呀！",
+      "isLunar": true
+    },
+    {
+      "name": "填仓节",
+      "date": "1-25",
+      "isRest": false,
+      "type": "农历节日",
+      "remark": "新的一年新丰收",
+      "isLunar": true
+    }
+  ],
+  "Feb": [
+    {
+      "name": "世界湿地日",
+      "date": "2-2",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "保护我们的地球🌍",
+      "isLunar": false
+    },
+    {
+      "name": "国际气象节",
+      "date": "2-10",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "天气预报是个好东西",
+      "isLunar": false
+    },
+    {
+      "name": "情人节",
+      "date": "2-14",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "情人节也要保护单身狗呀",
+      "isLunar": false
+    },
+    {
+      "name": "龙抬头",
+      "date": "2-2",
+      "isRest": false,
+      "type": "农历节日",
+      "remark": "抬头才能看到更广阔的天空",
+      "isLunar": true
+    }
+  ],
+  "Mar": [
+    {
+      "name": "全国爱耳日",
+      "date": "3-3",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "保护你的33",
+      "isLunar": false
+    },
+    {
+      "name": "学雷锋纪念日",
+      "date": "3-5",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "乐于助人是一种难得的品质",
+      "isLunar": false
+    },
+    {
+      "name": "妇女节",
+      "date": "3-8",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "妇女能顶半边天",
+      "isLunar": false
+    },
+    {
+      "name": "国际消费者权益日",
+      "date": "3-15",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "你的消费权利，你做主",
+      "isLunar": false
+    }
+  ],
+  "Apr": [
+    {
+      "name": "愚人节",
+      "date": "4-1",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "欺骗不代表愚人哦！",
+      "isLunar": false
+    },
+    {
+      "name": "世界卫生日",
+      "date": "4-7",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "注意卫生是很重要的哦",
+      "isLunar": false
+    },
+    {
+      "name": "世界地球日",
+      "date": "4-22",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "爱护我们的地球母亲",
+      "isLunar": false
+    },
+    {
+      "name": "世界读书日",
+      "date": "4-23",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "书籍是人类进步的阶梯",
+      "isLunar": false
+    }
+  ],
+  "May": [
+    {
+      "name": "劳动节",
+      "date": "5-1",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "劳动最光荣，劳动人民要休息",
+      "isLunar": false
+    },
+    {
+      "name": "青年节",
+      "date": "5-4",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "青年是最美好的年纪",
+      "isLunar": false
+    },
+    {
+      "name": "国际护士节",
+      "date": "5-12",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "感谢那些医护人员",
+      "isLunar": false
+    },
+    {
+      "name": "全国防灾减灾日",
+      "date": "5-12",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "提高防灾减灾意识，防患于未然。",
+      "isLunar": false
+    },
+    {
+      "name": "国际爱肤日",
+      "date": "5-25",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "我爱我",
+      "isLunar": false
+    },
+    {
+      "name": "世界无烟日",
+      "date": "5-31",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "吸烟有害健康",
+      "isLunar": false
+    },
+    {
+      "name": "端午节",
+      "date": "5-5",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "吃粽子呀！吃粽子呀！",
+      "isLunar": true
+    }
+  ],
+  "June": [
+    {
+      "name": "儿童节",
+      "date": "6-1",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "溪头卧剥莲蓬",
+      "isLunar": false
+    },
+    {
+      "name": "世界环境日",
+      "date": "6-5",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "保护环境，人人有责。",
+      "isLunar": false
+    },
+    {
+      "name": "全国爱眼日",
+      "date": "6-6",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "祝你心明眼亮！",
+      "isLunar": false
+    },
+    {
+      "name": "国际奥林匹克日",
+      "date": "6-23",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "运动真的会让你感到快乐",
+      "isLunar": false
+    },
+    {
+      "name": "全国土地日",
+      "date": "6-25",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "土地孕育了美好的生命",
+      "isLunar": false
+    },
+    {
+      "name": "国际反毒日",
+      "date": "6-26",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "千万不要尝试毒品",
+      "isLunar": false
+    }
+  ],
+  "July": [
+    {
+      "name": "香港回归日",
+      "date": "7-1",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "美好的回归",
+      "isLunar": false
+    },
+    {
+      "name": "建党节",
+      "date": "7-1",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "一切的开端",
+      "isLunar": false
+    },
+    {
+      "name": "七夕节",
+      "date": "7-7",
+      "isRest": false,
+      "type": "农历节日",
+      "remark": "鹊桥相会",
+      "isLunar": true
+    },
+    {
+      "name": "中元节",
+      "date": "7-15",
+      "isRest": false,
+      "type": "农历节日",
+      "remark": "鬼节",
+      "isLunar": true
+    }
+  ],
+  "Aug": [
+    {
+      "name": "建军节",
+      "date": "8-1",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "军人优先",
+      "isLunar": false
+    },
+    {
+      "name": "国际青年节",
+      "date": "8-12",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "青年是最美好的年纪",
+      "isLunar": false
+    },
+    {
+      "name": "中秋节",
+      "date": "8-15",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "举头望明月，低头思故乡。",
+      "isLunar": true
+    }
+  ],
+  "Sept": [
+    {
+      "name": "中国人民抗日战争胜利纪念日",
+      "date": "9-3",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "美好的日子来之不易",
+      "isLunar": false
+    },
+    {
+      "name": "教师节",
+      "date": "9-10",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "传道授业解惑，可以为师矣。",
+      "isLunar": false
+    },
+    {
+      "name": "全国爱牙日",
+      "date": "9-20",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "爱护你的牙齿，才能吃更多好吃的。",
+      "isLunar": false
+    },
+    {
+      "name": "国际和平日",
+      "date": "9-21",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "我的愿望是世界和平",
+      "isLunar": false
+    },
+    {
+      "name": "世界旅游日",
+      "date": "9-27",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "多去旅游，多去看世界。",
+      "isLunar": false
+    },
+    {
+      "name": "重阳节",
+      "date": "9-9",
+      "isRest": false,
+      "type": "农历节日",
+      "remark": "遍插茱萸少一人",
+      "isLunar": true
+    }
+  ],
+  "Oct": [
+    {
+      "name": "国庆节",
+      "date": "10-1",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "那是美好的一天，才有现在美好的生活。",
+      "isLunar": false
+    },
+    {
+      "name": "程序员节",
+      "date": "10-24",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "Show me your code",
+      "isLunar": false
+    },
+    {
+      "name": "万圣节前夜",
+      "date": "10-31",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "不给糖就捣乱",
+      "isLunar": false
+    }
+  ],
+  "Nov": [
+    {
+      "name": "万圣节",
+      "date": "11-1",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "给家吃昨晚的糖",
+      "isLunar": false
+    },
+    {
+      "name": "感恩节",
+      "date": "11-26",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "滴水之恩，涌泉相报。",
+      "isLunar": false
+    }
+  ],
+  "Dec": [
+    {
+      "name": "世界艾滋病日",
+      "date": "12-1",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "真正的去认识艾滋病，而不是歧视它。",
+      "isLunar": false
+    },
+    {
+      "name": "腊八节",
+      "date": "12-8",
+      "isRest": false,
+      "type": "农历节日",
+      "remark": "今天要喝腊八粥！",
+      "isLunar": true
+    },
+    {
+      "name": "南京大屠杀死难者国家公祭日",
+      "date": "12-13",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "勿忘国耻",
+      "isLunar": false
+    },
+    {
+      "name": "澳门回归纪念日",
+      "date": "12-20",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "美好的回归",
+      "isLunar": false
+    },
+    {
+      "name": "平安夜",
+      "date": "12-24",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "平平安安就是最好的",
+      "isLunar": false
+    },
+    {
+      "name": "圣诞节",
+      "date": "12-25",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "其实没有圣诞老人的，你可以自己当自己的圣诞老人。",
+      "isLunar": false
+    }
+  ]
+}
