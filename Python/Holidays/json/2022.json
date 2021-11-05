@@ -1,6 +1,6 @@
 {
   "year": 2022,
-  "buildDate": "2021-08-17 23:49:58",
+  "buildDate": "2021-11-05 14:10:48",
   "holidays": [
     {
       "name": "元旦",
@@ -582,6 +582,272 @@
       "isRest": false,
       "type": "二十四节气",
       "remark": "多美丽的节气名字呀！"
+    },
+    {
+      "name": "元旦放假",
+      "date": "2022-01-01",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "元旦放假",
+      "date": "2022-01-02",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "元旦放假",
+      "date": "2022-01-03",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "春节放假",
+      "date": "2022-01-31",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "春节放假",
+      "date": "2022-02-01",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "春节放假",
+      "date": "2022-02-02",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "春节放假",
+      "date": "2022-02-03",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "春节放假",
+      "date": "2022-02-04",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "春节放假",
+      "date": "2022-02-05",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "春节放假",
+      "date": "2022-02-06",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "春节调休上班",
+      "date": "2022-1-29",
+      "isRest": false,
+      "type": "调休上班",
+      "remark": "每年最悲伤的日子"
+    },
+    {
+      "name": "春节调休上班",
+      "date": "2022-1-30",
+      "isRest": false,
+      "type": "调休上班",
+      "remark": "每年最悲伤的日子"
+    },
+    {
+      "name": "清明节放假",
+      "date": "2022-04-03",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "清明节放假",
+      "date": "2022-04-04",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "清明节放假",
+      "date": "2022-04-05",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "清明节调休上班",
+      "date": "2022-4-2",
+      "isRest": false,
+      "type": "调休上班",
+      "remark": "每年最悲伤的日子"
+    },
+    {
+      "name": "劳动节放假",
+      "date": "2022-04-30",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "劳动节放假",
+      "date": "2022-05-01",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "劳动节放假",
+      "date": "2022-05-02",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "劳动节放假",
+      "date": "2022-05-03",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "劳动节放假",
+      "date": "2022-05-04",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "劳动节调休上班",
+      "date": "2022-4-24",
+      "isRest": false,
+      "type": "调休上班",
+      "remark": "每年最悲伤的日子"
+    },
+    {
+      "name": "劳动节调休上班",
+      "date": "2022-5-7",
+      "isRest": false,
+      "type": "调休上班",
+      "remark": "每年最悲伤的日子"
+    },
+    {
+      "name": "端午节放假",
+      "date": "2022-06-03",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "端午节放假",
+      "date": "2022-06-04",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "端午节放假",
+      "date": "2022-06-05",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "中秋节放假",
+      "date": "2022-09-10",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "中秋节放假",
+      "date": "2022-09-11",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "中秋节放假",
+      "date": "2022-09-12",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "国庆节放假",
+      "date": "2022-10-01",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "国庆节放假",
+      "date": "2022-10-02",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "国庆节放假",
+      "date": "2022-10-03",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "国庆节放假",
+      "date": "2022-10-04",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "国庆节放假",
+      "date": "2022-10-05",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "国庆节放假",
+      "date": "2022-10-06",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "国庆节放假",
+      "date": "2022-10-07",
+      "isRest": true,
+      "type": "公休假",
+      "remark": "每年最快乐的日子"
+    },
+    {
+      "name": "国庆节调休上班",
+      "date": "2022-10-8",
+      "isRest": false,
+      "type": "调休上班",
+      "remark": "每年最悲伤的日子"
+    },
+    {
+      "name": "国庆节调休上班",
+      "date": "2022-10-9",
+      "isRest": false,
+      "type": "调休上班",
+      "remark": "每年最悲伤的日子"
     }
   ]
 }
