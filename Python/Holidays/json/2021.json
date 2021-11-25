@@ -1,6 +1,6 @@
 {
   "year": 2021,
-  "buildDate": "2021-08-17 23:49:49",
+  "buildDate": "2021-11-25 16:25:32",
   "holidays": [
     {
       "name": "元旦",
@@ -332,13 +332,6 @@
       "remark": "给家吃昨晚的糖"
     },
     {
-      "name": "感恩节",
-      "date": "2021-11-26",
-      "isRest": false,
-      "type": "普通节日",
-      "remark": "滴水之恩，涌泉相报。"
-    },
-    {
       "name": "世界艾滋病日",
       "date": "2021-12-1",
       "isRest": false,
@@ -414,6 +407,13 @@
       "isRest": false,
       "type": "普通节日",
       "remark": "父爱如山"
+    },
+    {
+      "name": "感恩节",
+      "date": "2021-11-25",
+      "isRest": false,
+      "type": "普通节日",
+      "remark": "滴水之恩，涌泉相报。"
     },
     {
       "name": "小寒",

@@ -395,14 +395,6 @@
       "type": "普通节日",
       "remark": "给家吃昨晚的糖",
       "isLunar": false
-    },
-    {
-      "name": "感恩节",
-      "date": "11-26",
-      "isRest": false,
-      "type": "普通节日",
-      "remark": "滴水之恩，涌泉相报。",
-      "isLunar": false
     }
   ],
   "Dec": [

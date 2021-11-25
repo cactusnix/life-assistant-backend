@@ -15,7 +15,7 @@ import json
 import string
 import re
 
-START_YEAY = 2020
+START_YEAR = 2020
 END_YEAR = datetime.now().year + 1
 
 
@@ -138,7 +138,7 @@ def getDateByCount(year, month, number, weekday):
     return date.strftime("%Y-%m-%d")
 
 
-# 母亲节（五月第二个星期日）、父亲节（六月第三个星期日）、全国助残日（五月第三个星期日）
+# 母亲节（五月第二个星期日）、父亲节（六月第三个星期日）、全国助残日（五月第三个星期日）、感恩节（11月第四个星期四）
 def getHolidaysByCount(year):
     result = []
     result.append({
@@ -161,6 +161,13 @@ def getHolidaysByCount(year):
         "isRest": False,
         "type": "普通节日",
         "remark": "父爱如山"
+    })
+    result.append({
+        "name": "感恩节",
+        "date": getDateByCount(year, 11, 4, "Thu"),
+        "isRest": False,
+        "type": "普通节日",
+        "remark": "滴水之恩，涌泉相报。",
     })
     return result
 
@@ -251,7 +258,7 @@ def testApp():
 
 
 def startApp():
-    start = START_YEAY
+    start = START_YEAR
     while start <= END_YEAR:
         holidays = handleHolidays(start) + getHolidaysByCount(start) + get24(
             start) + getRestHolidays(start)
